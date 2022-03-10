@@ -1,0 +1,7 @@
+body::-webkit-scrollbar {
+  display: none;
+}
+.container_wrap {
+  width: 100%;
+  height: auto;
+}
