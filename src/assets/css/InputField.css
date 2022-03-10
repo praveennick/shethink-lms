@@ -1,0 +1,11 @@
+.input-field {
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+}
+/* .input-field::placeholder {
+  color: #1c1b1f;
+} */
+.login-label {
+  font-weight: bold;
+}
