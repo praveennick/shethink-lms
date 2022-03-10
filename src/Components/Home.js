@@ -1,9 +1,13 @@
 import React from "react";
+import Login from "./Login";
+import "../assets/css/Home.css";
+import Dashboard from "./Dashboard";
 
 function Home() {
   return (
-    <div>
-      <h1>This is Home</h1>
+    <div className="container_wrap">
+      {/* <Login /> */}
+      <Dashboard />
     </div>
   );
 }
