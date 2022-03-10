@@ -1,0 +1,74 @@
+.coursesBanner {
+  width: 100%;
+  height: 20vh;
+  /* padding-bottom: 0px; */
+  background: #1c1b1f;
+  border-radius: 22px;
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.courseBanner-left {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 45%;
+}
+.courseDesign {
+  width: auto;
+  height: 20vh;
+}
+.coursesBanner-text {
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-transform: capitalize;
+  height: 12vh;
+}
+.courseBanner-text-1 {
+  font-size: 18px;
+}
+.courseBanner-text-2 {
+  font-size: 12px;
+}
+.course-book {
+  width: auto;
+  height: 20vh;
+  padding: 10px;
+}
+.course-category {
+  margin-top: 15px;
+  display: flex;
+}
+.course-category a {
+  color: #b5c2c7;
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 40px;
+  text-decoration: none;
+}
+
+.course-category a:hover {
+  color: #6750a4;
+}
+.select-courses {
+  display: flex;
+  align-items: center;
+  padding: 20px 0px;
+}
+.select-courses-label {
+  font-weight: bold;
+  padding-right: 20px;
+}
+
+.select-courses-selectTag {
+  cursor: pointer;
+  color: #828284;
+  width: 30%;
+  font-size: 15px;
+  border: 1px solid #e1e1e1;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
