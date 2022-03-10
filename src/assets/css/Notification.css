@@ -1,0 +1,10 @@
+.notification {
+  position: absolute;
+  top: 13%;
+  right: 13%;
+  width: 20%;
+  background-color: aqua;
+  height: 60vh;
+  z-index: 1;
+  position: fixed;
+}
