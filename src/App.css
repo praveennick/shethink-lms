@@ -3,4 +3,6 @@
 * {
   margin: 0;
   font-family: "Nunito Sans", sans-serif;
+  user-select: none;
+  box-sizing: border-box;
 }
