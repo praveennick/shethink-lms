@@ -1,0 +1,111 @@
+.createModule {
+}
+
+.createModule-heading {
+  font-weight: 700;
+  color: #6750a4;
+  margin-bottom: 20px;
+}
+.createModule-form {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+}
+.createModule-form-items {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 20px;
+}
+.createModule-label {
+  font-size: 20px;
+  margin: 10px 0;
+}
+.createModule-textArea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.createModule-skill {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #8d8d8f;
+}
+
+.createModule-skill > option {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+}
+.createModule-renderItems {
+  width: 100%;
+  margin-top: 20px;
+}
+.createModule-upload {
+  width: 80%;
+  border: 1px dashed #1c1b1f;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* input[type="file"] {
+  display: none;
+} */
+
+.createModule-file-upload {
+  border: none;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+  background: #6750a4;
+  border-radius: 4px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 15px;
+  font-size: 16px;
+  margin: 10px 0;
+}
+.createModule-clipIcon {
+  margin-right: 10px;
+}
+
+.createModule-file-size {
+  color: #8d8d8f;
+}
+.createModule-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.createModule-back-btn {
+  background: #ffffff;
+  border: 1px solid #1c1b1f;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #1c1b1f;
+  padding: 10px 20px;
+  font-weight: 700;
+}
+.createModule-publish-btn {
+  text-decoration: none;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
