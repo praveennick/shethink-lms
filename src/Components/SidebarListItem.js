@@ -1,0 +1,19 @@
+import React from "react";
+import "../assets/css/SidebarListItem.css";
+import { Link } from "react-router-dom";
+
+function SidebarListItem({ icon, name, to }) {
+  // localStorage.setItem("name", name);
+  return (
+    <Link
+      className="sidebar-list-item"
+      to={`${to}`}
+      onClick={() => localStorage.setItem("name", name)}
+    >
+      {icon}
+      <h4 style={{ paddingLeft: "5px" }}>{name}</h4>
+    </Link>
+  );
+}
+
+export default SidebarListItem;
