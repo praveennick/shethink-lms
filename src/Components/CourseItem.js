@@ -2,6 +2,8 @@ import React from "react";
 import "../assets/css/CourseItem.css";
 import { ReactComponent as LinkedinLogo } from "../assets/icons/linkedin-square.svg";
 
+import { Link } from "react-router-dom";
+
 function CourseItem({ title, name, discription }) {
   return (
     <div className="courseItem">
@@ -19,7 +21,9 @@ function CourseItem({ title, name, discription }) {
       </div>
       <div className="courseItem-lower">
         <p className="courseItem-disc">discription- {discription}</p>
-        <button className="viewCourse-btn">View Course</button>
+        <Link className="viewCourse-btn" to="/viewCourse">
+          View Course
+        </Link>
       </div>
     </div>
   );
