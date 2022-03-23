@@ -35,6 +35,7 @@
   text-transform: capitalize;
 }
 .viewCourse-btn {
+  text-decoration: none;
   background: #1c1b1f;
   color: white;
   border: none;
