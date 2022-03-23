@@ -1,0 +1,88 @@
+.editModule {
+}
+
+.editModule-heading {
+  font-weight: 700;
+  color: #6750a4;
+  margin-bottom: 20px;
+}
+.editModule-form {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+}
+.editModule-form-items {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding: 20px;
+}
+.editModule-label {
+  font-size: 20px;
+  margin: 10px 0;
+}
+.editModule-textArea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin: 10px 0;
+}
+.editModule-skill {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #8d8d8f;
+}
+
+.editModule-skill > option {
+  background: #ffffff;
+  border-radius: 5px;
+  padding: 20px;
+}
+.editModule-btns {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+.editModule-back-btn {
+  background: #ffffff;
+  border: 1px solid #1c1b1f;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #1c1b1f;
+  padding: 10px 20px;
+  font-weight: 700;
+}
+.editModule-publish-btn {
+  text-decoration: none;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* seperate */
+.editModule-reference-types {
+  display: flex;
+  align-items: center;
+}
+.editModule-reference-item {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  width: 100%;
+  padding: 10px 10px;
+  margin-right: 20px;
+}
+.editModule-reference-item-type {
+  color: #66b1f5;
+  cursor: pointer;
+}
+.editModule-del-btn {
+  cursor: pointer;
+}

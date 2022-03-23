@@ -1,0 +1,104 @@
+.myProfile-content {
+  display: flex;
+  /* border: 1px solid black; */
+  background: #f9f9f9;
+  border-radius: 10px;
+}
+
+.profile-information {
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  /* border: 1px solid red; */
+}
+.profile-downArrow {
+  stroke: black;
+  margin-left: 15px;
+  cursor: pointer;
+}
+.profile-picture-box {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  margin-top: 20px;
+  position: relative;
+  height: auto;
+  /* border: 1px solid red; */
+}
+.profile-picture {
+  border-radius: 50%;
+  width: 70%;
+}
+
+.editProfilePic {
+  width: 15%;
+  height: 15%;
+  position: absolute;
+  left: 58%;
+  top: 72%;
+  cursor: pointer;
+  /* border: 1px solid black; */
+}
+
+.profile-left {
+  /* border: 1px solid pink; */
+  /* height: 80vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+}
+.profile-right {
+  width: 70%;
+}
+
+/* .profile-form label {
+  font-weight: 600;
+} */
+.profile-form {
+  padding: 40px;
+  /* align-items: center; */
+  display: flex;
+  flex-direction: column;
+  /* border: 1px solid brown; */
+  line-height: 50px;
+}
+.profile-btn {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+.profile-save-btn {
+  width: 20%;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.profile-fav-course {
+  margin: 30px 0;
+  background: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  position: relative;
+}
+.profile-fav-course-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.profile-fav-course-downArrow {
+  stroke: black;
+  width: 16px;
+  margin-left: 15px;
+}
+
+.profile-fav-course-modules {
+  display: flex;
+  justify-content: space-between;
+}

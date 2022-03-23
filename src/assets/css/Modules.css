@@ -1,0 +1,32 @@
+.modules {
+}
+
+.module-content-heading {
+  /* margin-left: 20px; */
+}
+.module-content {
+  margin: 10px 0;
+  position: relative;
+}
+
+.module-content-modules {
+  padding: 20px 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.module-loadMore-btn-container {
+}
+.module-loadMore-btn {
+  text-decoration: none;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 10px;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 10px 0;
+  text-align: center;
+}

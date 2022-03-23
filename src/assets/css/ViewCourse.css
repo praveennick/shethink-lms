@@ -1,0 +1,140 @@
+.viewCourse {
+  width: 100%;
+  /* border: 1px solid black; */
+  /* height: 80vh; */
+}
+.viewCourse-content {
+  border: 1px solid #e1e1e1;
+  /* height: 80vh; */
+  border-radius: 12px;
+  padding: 20px;
+}
+.viewCourse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.viewCourse-left {
+  display: flex;
+  align-items: center;
+}
+.viewCourse-leftArrow-btn {
+  text-decoration: none;
+  background: #6750a4;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 2.34483px;
+}
+.viewCourse-title {
+  display: flex;
+  flex-direction: column;
+  text-transform: capitalize;
+  color: #6750a4;
+  margin-left: 10px;
+}
+.viewCourse-time {
+  /* border: 1px solid black; */
+  padding-left: 35px;
+  text-transform: capitalize;
+  margin-bottom: 30px;
+}
+.viewCourse-right {
+  cursor: pointer;
+}
+.viewCourse-media-box {
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  padding: 20px;
+  width: 50%;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+}
+
+.viewCourseMediaImg {
+  width: 95%;
+}
+.viewCourseMediaLink {
+  color: #258ff1;
+}
+
+.viewCourse-name {
+  display: flex;
+  align-items: center;
+  margin: 20px 0px;
+}
+.viewCourse-linkedin-logo {
+  margin-left: 10px;
+}
+.viewCourse-description {
+  text-align: justify;
+  text-transform: capitalize;
+}
+.viewCourse-line {
+  margin: 20px 0px;
+  border: 1px solid #6750a4;
+  /* opacity: 0.6; */
+}
+.viewCourse-likeComment-box {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6750a4;
+}
+.viewCourse-likes,
+.viewCourse-comments {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10px;
+}
+.viewCourse-heartlogo,
+.viewCourse-commentlogo {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.viewCourse-comment-box {
+  margin-top: 20px;
+  width: 60%;
+}
+.viewCourse-comment-field {
+  display: flex;
+  align-items: center;
+}
+
+.viewCourse-label {
+  font-weight: bold;
+}
+.viewCourse-inputField-with-icon {
+  display: flex;
+  align-items: center;
+  /* border: 1px solid black; */
+  position: relative;
+  width: 100%;
+}
+.viewCourse-inputField-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.viewCourse-smileLogo {
+  position: absolute;
+  right: 27%;
+  cursor: pointer;
+}
+.viewCourse-sendLogo {
+  position: absolute;
+  right: 20%;
+  cursor: pointer;
+}
+.viewCourse-inputField {
+  background: #f7f2fa;
+  width: 80%;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  margin-left: 20px;
+}

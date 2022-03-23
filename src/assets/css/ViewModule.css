@@ -1,0 +1,56 @@
+.viewModule {
+}
+.viewModule-allModules {
+  display: flex;
+  align-items: center;
+  margin: 30px 0;
+}
+.viewModule-leftArrow-btn {
+  background: #6750a4;
+  border-radius: 2.34483px;
+  padding: 5px 12px;
+  margin-right: 20px;
+  border: none;
+}
+.viewModule-month-filter {
+  margin: 20px 0;
+}
+.viewModule-month {
+  background: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  cursor: pointer;
+  color: #8d8d8f;
+  margin-left: 20px;
+}
+.viewModule-heading {
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  line-height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.viewModule-heading-title {
+  color: #6750a4;
+}
+.viewModule-heading-time {
+  font-size: 14px;
+  font-weight: 400;
+}
+.viewModule-edit-btn {
+  background: #ffffff;
+  border: 0.44px solid #e1e1e1;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 25px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  padding: 5px 20px;
+  text-decoration: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: #1c1b1f;
+  margin-right: 20px;
+}
