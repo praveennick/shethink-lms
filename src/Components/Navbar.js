@@ -13,7 +13,7 @@ function Navbar() {
 
   useEffect(() => {
     setNavName(localStorage.getItem("name"));
-    console.log(navName);
+    // console.log(navName);
   }, [navName]);
 
   return (
