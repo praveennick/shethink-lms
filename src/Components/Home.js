@@ -25,8 +25,9 @@ function Home() {
         <ScrollToTop />
         <Sidebar />
         <Navbar />
-        <Switch>
-          <div className="home-content">
+
+        <div className="home-content">
+          <Switch>
             <Route path="/home" component={HrHome} />
             <Route path="/courses" component={Courses} />
             <Route path="/profile" component={MyProfile} />
@@ -37,8 +38,8 @@ function Home() {
             <Route path="/viewModule" component={ViewModule} />
             <Route path="/createModule" component={CreateModule} />
             <Route path="/editModule" component={EditModule} />
-          </div>
-        </Switch>
+          </Switch>
+        </div>
       </Router>
     </div>
   );
