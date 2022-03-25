@@ -3,7 +3,9 @@ import thunk from "redux-thunk";
 import { userReducer } from "./reducers/user.reducer";
 
 const initialState = {
-  userSignin: {},
+  userSignin: localStorage.getItem("userInfo")
+    ? { userInfo: JSON.parse(localStorage.getItem("userInfo")) }
+    : null,
 };
 
 const reducers = combineReducers({
