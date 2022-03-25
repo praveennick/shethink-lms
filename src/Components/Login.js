@@ -1,3 +1,5 @@
+import { CircularProgress } from "@mui/material";
+import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/Login.css";
@@ -7,7 +9,7 @@ import logo from "../assets/images/logo.svg";
 import { userSigninAction } from "../redux/actions/user.actions";
 import InputField from "./InputField";
 
-function Login() {
+function Login(props) {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
 
@@ -21,15 +23,26 @@ function Login() {
   };
 
   useEffect(() => {
-    console.log(userSignin);
-  }, [userSignin]);
+    if (userSignin && userSignin.userInfo) {
+      props.history.push("/home");
+    }
+    console.log("userSignin.userInfo", userSignin);
+  }, [userSignin, props.history]);
 
   return (
     <>
       {userSignin && userSignin.loading ? (
-        <div>
-          <h1>Loading...</h1>
-        </div>
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            width: "100%",
+            height: "100vh",
+            justifyContent: "center",
+          }}
+        >
+          <CircularProgress />
+        </Box>
       ) : (
         <div className="login-container">
           <div className="login-left">
