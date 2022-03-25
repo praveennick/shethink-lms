@@ -15,9 +15,11 @@ export const userSigninAction = (requestBody) => async (dispatch) => {
       "/shethink/v1/login",
       requestBody
     );
+    // console.log("data", data.data);
+    localStorage.setItem("userInfo", JSON.stringify(data.data));
     dispatch({
       type: USER_SIGNIN_SUCCESS,
-      payload: data,
+      userInfo: data.data,
     });
   } catch (error) {
     dispatch({
