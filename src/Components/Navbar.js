@@ -4,9 +4,11 @@ import { ReactComponent as Bell } from "../assets/icons/bell.svg";
 import { ReactComponent as Setting } from "../assets/icons/setting.svg";
 import Notification from "./Notification";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Navbar() {
+  const history = useHistory();
+
   const [showNotification, setShowNotification] = useState(false);
 
   const [navName, setNavName] = useState("");
@@ -14,8 +16,12 @@ function Navbar() {
   useEffect(() => {
     setNavName(localStorage.getItem("name"));
     // console.log(navName);
-  }, [navName]);
+  }, []);
 
+  const logoutUser = () => {
+    localStorage.removeItem("userInfo");
+    history.push("/");
+  };
   return (
     <>
       <div className="navbar">
@@ -35,7 +41,7 @@ function Navbar() {
             {/* <img src={setting} alt="" className="settingIcon" /> */}
             <Setting />
           </Link>
-          <div className="nav-logout-btn">
+          <div className="nav-logout-btn" onClick={logoutUser}>
             <p>Logout</p>
           </div>
         </div>
