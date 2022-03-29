@@ -92,8 +92,25 @@ function HrHome() {
                 <InputField placeholder={"type here"} />
               </div>
             </div>
-            <label htmlFor="">Email</label>
-            <InputField placeholder={"example@gmail.com"} />
+            <div className="hrHome-modal-form-box">
+              <div className="hrHome-modal-form-box-1">
+                <label htmlFor="">Email</label>
+                <InputField placeholder={"example@gmail.com"} />
+              </div>
+              <div className="hrHome-modal-form-box-2">
+                <label htmlFor="">Date of joining</label>
+                <InputField
+                  type={"date"}
+                  style={{
+                    textTransform: "uppercase",
+                    color: "#605F62",
+                    cursor: "pointer",
+                  }}
+                />
+              </div>
+            </div>
+            <div></div>
+
             <label htmlFor="">Designation</label>
             <InputField placeholder={"type here"} />
             <label htmlFor="">Technology</label>
