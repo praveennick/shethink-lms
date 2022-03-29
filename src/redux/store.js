@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-import { userReducer } from "./reducers/user.reducer";
+import { getTechReducer, userReducer } from "./reducers/user.reducer";
 
 const initialState = {
   userSignin: localStorage.getItem("userInfo")
@@ -10,6 +10,7 @@ const initialState = {
 
 const reducers = combineReducers({
   userSignin: userReducer,
+  techRequest: getTechReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
