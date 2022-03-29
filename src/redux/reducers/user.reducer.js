@@ -19,3 +19,19 @@ export const userReducer = (
       return currentState;
   }
 };
+
+export const getTechReducer = (
+  currentState = { loading: false, data: {} },
+  action
+) => {
+  switch (action.type) {
+    case "GET_TECH_REQUEST":
+      return { loading: false };
+    case "GET_TECH_SUCCESS":
+      return { loading: false, data: action.payload };
+    case "GET_TECH_FAILURE":
+      return { loading: false, error: action.error };
+    default:
+      return currentState;
+  }
+};
