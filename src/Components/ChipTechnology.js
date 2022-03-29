@@ -1,9 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Chip from "@mui/material/Chip";
 import InputField from "./InputField";
+import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { getTechAction } from "../redux/actions/user.actions";
 
 function ChipTechnology() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const techRequest = useSelector((state) => state.techRequest);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    // console.log(
+    //   "data",
+    //   techRequest.data.map((item) => item.title)
+    // );
+    getTech();
+  }, []);
+
+  const getTech = () => {
+    dispatch(getTechAction(userSignin.userInfo));
+  };
+
   const [chips, setChips] = useState([
     "React.js",
     "Javascript",
@@ -35,6 +54,10 @@ function ChipTechnology() {
       <label htmlFor="">Saved Technology</label>
       <div className="hrHome-modal-technologies">
         {/* <div className="hrHome-modal-technology-chip"></div> */}
+        {/* {console.log(
+          "array",
+          techRequest.data.map((item) => item.title)
+        )} */}
         {chips.map((chipName) => (
           <Chip
             sx={chipStyle}
