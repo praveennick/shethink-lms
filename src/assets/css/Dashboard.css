@@ -1,12 +1,31 @@
-/* .dashboard {
+.dashboard-header {
   display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
 }
 
-.dashboard-content {
+.dashboard-label {
+  width: 30%;
+  height: 150px;
+  background: linear-gradient(115.78deg, #29323c 0%, #485563 99.38%);
+  border-radius: 22px;
+}
+.dashboard-label-design {
   position: absolute;
-  top: 15%;
-  left: 20%;
-  width: 80%;
-
-  padding: 10px 2% 20px 20px;
-} */
+}
+.dashboard-label-headings {
+  position: relative;
+  top: 48%;
+  left: 8%;
+}
+.dashboard-label-headings h2 {
+  color: white;
+  margin-bottom: 5px;
+}
+.dashboard-label-headings p {
+  color: #c3c6ca;
+}
+.dashboard-header-design {
+  width: 70%;
+}
