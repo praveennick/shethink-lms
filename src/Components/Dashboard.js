@@ -6,6 +6,8 @@ import "../assets/css/Dashboard.css";
 import { ReactComponent as LabelDesign } from "../assets/images/dash-label-design.svg";
 // import { ReactComponent as HeaderDesign } from "../assets/images/dash-header-design.svg";
 import HeaderDesign from "../assets/images/dash-header-design.png";
+import ProgressChart from "./ProgressChart";
+import RecentActivity from "./RecentActivity";
 
 function Dashboard() {
   return (
@@ -30,7 +32,13 @@ function Dashboard() {
           {/* <HeaderDesign className="dashboard-header-design" /> */}
         </div>
       </div>
-      <Calandar />
+      <div className="dashboad-content">
+        <div className="dashboard-left">
+          <Calandar />
+          <ProgressChart />
+        </div>
+        <RecentActivity />
+      </div>
     </div>
   );
 }
