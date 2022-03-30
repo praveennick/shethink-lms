@@ -18,6 +18,7 @@ import ViewModule from "./Components/ViewModule";
 import CreateModule from "./Components/CreateModule";
 import EditModule from "./Components/EditModule";
 import Dummy from "./Components/Dummy";
+import InternHistory from "./Components/InternHistory";
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
               <Route exact path="/viewModule" component={ViewModule} />
               <Route exact path="/createModule" component={CreateModule} />
               <Route exact path="/editModule" component={EditModule} />
+              <Route exact path="/internHistory" component={InternHistory} />
             </div>
           </div>
         </Switch>
