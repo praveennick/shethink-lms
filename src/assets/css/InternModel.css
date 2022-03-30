@@ -1,0 +1,81 @@
+.internModel {
+  /* border: 1px solid black; */
+}
+.internModel-btns {
+  margin: 20px 0;
+}
+.internModel-btn-1 {
+  color: #1c1b1f;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 70%;
+  margin: 10px 0;
+  text-align: center;
+  margin-right: 10px;
+}
+.internModel-btn-2 {
+  color: #1c1b1f;
+  text-decoration: none;
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  padding: 10px 50px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 70%;
+  margin: 10px 0;
+  text-align: center;
+}
+
+.internModel-btn-1:hover {
+  background: #1c1b1f;
+  color: white;
+}
+.internModel-btn-2:hover {
+  background: #1c1b1f;
+  color: white;
+}
+.internModel-export-btn {
+  color: #6750a4;
+  text-decoration: none;
+  font-size: 18px;
+  margin: 10px 0;
+  font-weight: bold;
+}
+.internModel-task-header {
+  display: flex;
+  flex-direction: column;
+}
+.internModel-task-header-label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.internModel-task-content-header {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+.internModel-task-content-title {
+  color: #6750a4;
+  margin-right: 15px;
+}
+.internModel-edit-icon {
+  width: 15px;
+}
+.internModel-task-week-form {
+  width: 100%;
+}
+.internModel-task-week::before {
+  border: 2px solid black;
+}
+.internModel-task-label {
+}
+.internModel-task-day-item {
+  width: 100%;
+  margin: 10px 0;
+}
