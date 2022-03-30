@@ -22,6 +22,10 @@ function Navbar() {
     localStorage.removeItem("userInfo");
     history.push("/");
   };
+
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
   return (
     <>
       <div className="navbar">
@@ -32,7 +36,8 @@ function Navbar() {
         <div className="nav-right">
           <div
             className="nav-notification-icon"
-            onClick={() => setShowNotification(!showNotification)}
+            // onClick={() => setShowNotification(!showNotification)}
+            onClick={handleOpen}
           >
             {/* <img src={bell} alt="" /> */}
             <Bell />
@@ -46,7 +51,8 @@ function Navbar() {
           </div>
         </div>
       </div>
-      {showNotification && <Notification />}
+      <Notification open={open} handleClose={handleClose} />
+      {/* {showNotification && <Notification />} */}
     </>
   );
 }
