@@ -132,6 +132,9 @@ th {
   color: black;
   font-weight: normal;
 }
+.hrHome-nav-menu Link {
+  text-decoration: none;
+}
 .hrHome-nav-menu li {
   list-style-type: none;
   padding: 10px;

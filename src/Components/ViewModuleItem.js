@@ -8,7 +8,7 @@ import { ReactComponent as PriceTag } from "../assets/icons/price-tag.svg";
 
 import viewCourseMedia1 from "../assets/images/viewCourse-banner-1.png";
 
-function ViewModuleItem() {
+function ViewModuleItem({ hide }) {
   return (
     <div className="viewModuleItem">
       <div className="viewModuleItem-header">
@@ -37,7 +37,7 @@ function ViewModuleItem() {
         </p>
       </div>
       <hr className="viewCourse-line" />
-      <div className="viewCourse-likeComment-box">
+      <div className="viewCourse-likeComment-box" style={hide}>
         <div className="viewCourse-likes">
           <HeartLogo className="viewCourse-heartlogo" />
           <p>24 Likes</p>

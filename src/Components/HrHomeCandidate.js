@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import "../assets/css/CandidateItem.css";
+import "../assets/css/HrHomeCandidate.css";
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as DeleteIcon } from "../assets/icons/delete-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteCandidate } from "../redux/actions/user.actions";
 import { GET_CANDIDATE_SUCCESS } from "../constants";
 
-function CandidateItem({ data }) {
+function HrHomeCandidate({ data }) {
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
   const candidatesList = useSelector((state) => state.candidatesList);
@@ -22,7 +22,7 @@ function CandidateItem({ data }) {
     // dispatch(candidatesList(userSignin.filteredCandidateList));
   };
   return (
-    <tr className="candidateItem">
+    <tr className="hrHomeCandidate">
       <td>{data.username}</td>
       <td>{data.designation}</td>
       <td>{data.technology}</td>
@@ -30,11 +30,11 @@ function CandidateItem({ data }) {
       <td>
         {data.status ? <>Access</> : <>Deny</>}
         <DownArrow
-          className="candidateItem-downArrow"
+          className="hrHomeCandidate-downArrow"
           onClick={() => setSubMenu(!subMenu)}
         />
         {subMenu && (
-          <div className="candidateItem-menu">
+          <div className="hrHomeCandidate-menu">
             {data.status ? (
               <>
                 <li>Access</li>
@@ -51,7 +51,7 @@ function CandidateItem({ data }) {
       </td>
       <td>
         <DeleteIcon
-          className="candidateItem-deleteIcon"
+          className="hrHomeCandidate-deleteIcon"
           onClick={() => handleDelete(data.id)}
         />
       </td>
@@ -59,4 +59,4 @@ function CandidateItem({ data }) {
   );
 }
 
-export default CandidateItem;
+export default HrHomeCandidate;

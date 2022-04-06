@@ -1,20 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
 import "../assets/css/HrHome.css";
-// import CandidateItem from "./CandidateItem";
-import HrHomeCandidate from "./HrHomeCandidate";
+import InternHomeCandidate from "./InternHomeCandidate";
 
 import InputField from "./InputField";
+
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
+
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as ModalDesign } from "../assets/icons/modal-bg-design.svg";
 import ChipTechnology from "./ChipTechnology";
-import { candidatesList } from "../redux/actions/user.actions";
 import { Link } from "react-router-dom";
 
-function HrHome() {
-  const userSignin = useSelector((state) => state.userSignin);
+function InternHome() {
   const [subMenu, setSubMenu] = useState(false);
   {
     /* add new technology */
@@ -29,11 +27,6 @@ function HrHome() {
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
 
-  //Candidate Array
-  const dispatch = useDispatch();
-  const candidateItems = useSelector((state) => state.candidatesList);
-  console.log(candidateItems);
-
   const style = {
     position: "absolute",
     top: "50%",
@@ -47,11 +40,6 @@ function HrHome() {
     overFlow: "hidden",
     p: 0,
   };
-
-  useEffect(() => {
-    console.log("candidateItems", candidateItems);
-    dispatch(candidatesList(userSignin.userInfo));
-  }, []);
 
   return (
     <div className="hrHome">
@@ -162,23 +150,24 @@ function HrHome() {
               )}
             </th>
             <th>Skill</th>
+            <th>Task</th>
             <th>Created Course</th>
             <th>Status</th>
             <th>Delete</th>
           </tr>
-          {candidateItems.candidatesInfo &&
-            candidateItems.candidatesInfo.map((item, i) => {
-              return (
-                <>
-                  {console.log("item", item)}
-                  <HrHomeCandidate data={item} />
-                </>
-              );
-            })}
+          <InternHomeCandidate courses={"1"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
+          <InternHomeCandidate courses={"Nil"} />
         </tbody>
       </table>
     </div>
   );
 }
 
-export default HrHome;
+export default InternHome;

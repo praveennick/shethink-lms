@@ -1,15 +1,15 @@
-.candidateItem {
+.internHomeCandidate {
   background: #f9f9f9;
   position: relative;
 }
-.candidateItem-downArrow {
+.internHomeCandidate-downArrow {
   stroke: #1c1b1f;
   width: 16px;
   height: 8px;
   cursor: pointer;
 }
 
-.candidateItem-menu {
+.internHomeCandidate-menu {
   right: 14%;
   z-index: 1;
   position: absolute;
@@ -18,19 +18,29 @@
   border-radius: 5px;
   padding: 10px;
 }
-.candidateItem-menu li {
+.internHomeCandidate-menu li {
   list-style-type: none;
   padding: 10px;
   cursor: pointer;
   text-align: center;
 }
-.candidateItem-menu li:hover {
+.internHomeCandidate-menu li:hover {
   background: rgba(103, 80, 164, 0.12);
   border-radius: 5px;
   color: #6750a4;
 }
-
-.candidateItem-deleteIcon {
+.internHomeCandidate-new-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.internHomeCandidate-new {
+  color: #258ff1;
+  font-size: 10px;
+  transform: translateY(-40%);
+  font-weight: 600;
+}
+.internHomeCandidate-deleteIcon {
   width: 20px;
   height: 20px;
   cursor: pointer;
