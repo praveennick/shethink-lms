@@ -19,6 +19,9 @@ import CreateModule from "./Components/CreateModule";
 import EditModule from "./Components/EditModule";
 import Dummy from "./Components/Dummy";
 import InternHistory from "./Components/InternHistory";
+import CandidateProfile from "./Components/CandidateProfile";
+import InternHome from "./Components/InternHome";
+import NewCourse from "./Components/NewCourse";
 
 function App() {
   return (
@@ -43,6 +46,13 @@ function App() {
               <Route exact path="/createModule" component={CreateModule} />
               <Route exact path="/editModule" component={EditModule} />
               <Route exact path="/internHistory" component={InternHistory} />
+              <Route exact path="/newCourse" component={NewCourse} />
+              <Route
+                exact
+                path="/candidateProfile"
+                component={CandidateProfile}
+              />
+              <Route exact path="/internHome" component={InternHome} />
             </div>
           </div>
         </Switch>
