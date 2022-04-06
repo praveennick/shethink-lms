@@ -17,16 +17,18 @@ function Notification({ open, handleClose }) {
     width: "23%",
     // transform: "translate(-50%, -50%)",
     // width: "40%",
+    backgroundColor: "transparent",
+
     bgcolor: "background.paper",
     // border: "2px solid #000",
-    boxShadow: 24,
+    boxShadow: 0,
     borderRadius: 1,
     overFlow: "hidden",
     p: 0,
   };
   return (
     <Modal open={open} onClose={handleClose}>
-      <Box sx={style}>
+      <Box>
         <div className="notification">
           <div className="notification-header">
             <NotificationBell className="notification-bell" />
