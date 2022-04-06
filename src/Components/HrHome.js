@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "../assets/css/HrHome.css";
-import CandidateItem from "./CandidateItem";
+import HrHomeCandidate from "./HrHomeCandidate";
 
 import InputField from "./InputField";
 
@@ -10,6 +10,7 @@ import Modal from "@mui/material/Modal";
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as ModalDesign } from "../assets/icons/modal-bg-design.svg";
 import ChipTechnology from "./ChipTechnology";
+import { Link } from "react-router-dom";
 
 function HrHome() {
   const [subMenu, setSubMenu] = useState(false);
@@ -133,8 +134,18 @@ function HrHome() {
               />
               {subMenu && (
                 <div className="hrHome-nav-menu">
-                  <li>Full Time</li>
-                  <li>Intern</li>
+                  <Link
+                    to="/home"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <li>Full Time</li>
+                  </Link>
+                  <Link
+                    to="/internHome"
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <li>Intern</li>
+                  </Link>
                 </div>
               )}
             </th>
@@ -143,22 +154,18 @@ function HrHome() {
             <th>Status</th>
             <th>Delete</th>
           </tr>
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
-          <CandidateItem />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
+          <HrHomeCandidate />
         </tbody>
       </table>
     </div>
