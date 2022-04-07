@@ -1,31 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import Calendar from "react-calendar";
 import "../assets/css/CandidateProfile.css";
-
+import "react-calendar/dist/Calendar.css";
 import { ReactComponent as LeftArrow } from "../assets/icons/left-arrow.svg";
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import TaskItem from "./TaskItem";
+import moment from 'moment';
 
 function CandidateProfile() {
-  const month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December",
-  ];
-
-  const d = new Date();
-  let monthName = month[d.getMonth()];
-  let fullYear = d.getFullYear();
+  const [value, onChange] = useState(new Date());
+  // const d = new Date();
+  // let fullYear = d.getFullYear();
   return (
     <div className="candidateProfile">
       <div className="candidateProfile-header-left">
@@ -58,65 +44,16 @@ function CandidateProfile() {
             <h3>Attendance</h3>
             <div className="candidateProfile-calendar">
               <div>
-                <h2>{d.getDate()}</h2>
-                <h2>{monthName + " " + fullYear}</h2>
+                <h2>{moment().format("DD")}</h2>
+                <h2>{moment().format("MMMM YYYY")}</h2>
+                {/* <h2>{monthName + " " + fullYear}</h2> */}
               </div>
-              <table className="full-calendar">
-                <tr>
-                  <th>S</th>
-                  <th>S</th>
-                  <th>M</th>
-                  <th>T</th>
-                  <th>W</th>
-                  <th>T</th>
-                  <th>F</th>
-                </tr>
-                <tr>
-                  <td>29</td>
-                  <td>30</td>
-                  <td className="bg-color">1</td>
-                  <td>2</td>
-                  <td>3</td>
-                  <td>4</td>
-                  <td>5</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>7</td>
-                  <td>8</td>
-                  <td>9</td>
-                  <td>10</td>
-                  <td>11</td>
-                  <td>12</td>
-                </tr>
-                <tr>
-                  <td>13</td>
-                  <td>14</td>
-                  <td>15</td>
-                  <td>16</td>
-                  <td>17</td>
-                  <td>18</td>
-                  <td>19</td>
-                </tr>
-                <tr>
-                  <td>20</td>
-                  <td>21</td>
-                  <td>22</td>
-                  <td>23</td>
-                  <td>24</td>
-                  <td>25</td>
-                  <td>26</td>
-                </tr>
-                <tr>
-                  <td>27</td>
-                  <td>28</td>
-                  <td>29</td>
-                  <td>30</td>
-                  <td>31</td>
-                  <td>1</td>
-                  <td>2</td>
-                </tr>
-              </table>
+
+              <Calendar
+                onChange={onChange}
+                value={value}
+                className="full-calendar"
+              />
             </div>
           </div>
           <div className="candidateProfile-recent-activity">

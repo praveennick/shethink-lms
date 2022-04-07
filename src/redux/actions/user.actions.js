@@ -26,6 +26,11 @@ import {
 } from "../../constants";
 
 import axiosInstance from "../../api";
+import { async } from "rxjs";
+
+
+localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbElEIjoiam9lYmlkZW4xQGdtYWlsLmNvbSIsImlhdCI6MTY0NzI2MzAxOCwiZXhwIjoxNjU1OTAzMDE4fQ.eNXP8AzmQynLMSkhCfcD4L_EsRuasu7ljBZ0yLr60bc")
+const token = localStorage.getItem("token")
 
 export const userSigninAction = (requestBody) => async (dispatch) => {
   dispatch({
@@ -151,13 +156,12 @@ export const addCandidate = (userInfo) => async (dispatch) => {
 };
 
 
-
 export const courseList = (userInfo) => async (dispatch) => {
   dispatch({ type: GET_COURSE_LIST_REQUEST });
   try {
     const { data } = await axiosInstance.get("/course", {
       headers: {
-        Authorization: `Bearer ${userInfo.token}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     dispatch({

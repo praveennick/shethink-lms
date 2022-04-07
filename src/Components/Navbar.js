@@ -14,9 +14,10 @@ function Navbar() {
   const [navName, setNavName] = useState("");
 
   useEffect(() => {
-    setNavName(localStorage.getItem("name"));
+    // setNavName(localStorage.getItem("name"));
     // console.log(navName);
-  }, []);
+    setNavName(localStorage.getItem("name"))
+  }, [navName]);
 
   const logoutUser = () => {
     localStorage.removeItem("userInfo");
