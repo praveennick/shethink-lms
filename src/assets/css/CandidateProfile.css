@@ -114,8 +114,9 @@ table tr td {
   background: #ffffff;
   border: 0.5px solid #6750a4;
   border-radius: 5px;
-  padding: 20px;
+  padding: 20px 20px 30px 35px;
   position: relative;
+  overflow: hidden;
 }
 .candidateProfile-recent-activity-box::before {
   content: "";
@@ -130,9 +131,9 @@ table tr td {
   height: 5px;
   background: #6750a4;
   width: 30px;
-  top: 20%;
+  top: 18%;
   position: absolute;
-  transform: translateX(-70%);
+  transform: translateX(-110%);
 }
 .candidateProfile-down-btn {
   position: absolute;
@@ -146,4 +147,27 @@ table tr td {
   align-items: center;
   justify-content: center;
   border-radius: 50%;
+}
+.candidateProfile-recent-activity-box ul {
+  list-style: none;
+}
+.candidateProfile-recent-activity-box ul li {
+  display: flex;
+  align-items: center;
+}
+.candidateProfile-recent-activity-box ul .task-ended::before {
+  content: "\2022";
+  color: #e82a2a;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  font-size: 30px;
+  margin-left: -1.2em; /* Also needed for space (tweak if needed) */
+}
+.candidateProfile-recent-activity-box ul .task-picked::before {
+  content: "\2022";
+  color: #007b40;
+  font-weight: bold; /* If you want it to be bold */
+  display: inline-block; /* Needed to add space between the bullet and the text */
+  font-size: 30px;
+  margin-left: -1.2em; /* Also needed for space (tweak if needed) */
 }

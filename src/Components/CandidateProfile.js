@@ -126,8 +126,8 @@ function CandidateProfile() {
               <h2>Day 2</h2>
               <h4>Task Name - Fundamental of React js</h4>
               <ul>
-                <li>Task pickup time - 11:00 am</li>
-                <li>Task ended time - 7:00 pm</li>
+                <li className="task-picked">Task pickup time - 11:00 am</li>
+                <li className="task-ended">Task ended time - 7:00 pm</li>
               </ul>
               <div className="candidateProfile-down-btn">
                 <DownArrow stroke="black" />
