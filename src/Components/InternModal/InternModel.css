@@ -1,4 +1,6 @@
-
+.internModel {
+  /* border: 1px solid black; */
+}
 .internModel-btns {
   margin: 20px 0;
 }
@@ -95,7 +97,8 @@
   background-color: white;
   border: 5px solid #6750a4;
 }
-
+.internModel-task-label {
+}
 .internModel-task-day-item {
   width: 100%;
   margin: 10px 0;

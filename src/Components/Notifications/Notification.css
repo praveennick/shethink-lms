@@ -1,0 +1,46 @@
+.notification::-webkit-scrollbar {
+  display: none;
+}
+.notification {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 23%;
+  background-color: white;
+  height: 100%;
+  z-index: 1;
+  position: fixed;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 25px 35px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  /* border-radius: 15px; */
+  /* padding: 0px 10px 0px 0px; */
+  padding-bottom: 5px;
+  overflow-y: scroll;
+  /* border: 1px solid black; */
+}
+
+.notification-header {
+  padding: 10px;
+  border-radius: 15px 15px 0px 0px;
+  width: 22.8%;
+  position: fixed;
+  display: flex;
+  overflow: hidden;
+  background-color: white;
+  z-index: 1;
+  height: 10%;
+  /* border: 1px solid black; */
+  justify-content: space-between;
+  align-items: center;
+}
+.notification-bell,
+.notification-delete {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+.notification-content {
+  margin-top: 20%;
+  display: flex;
+  flex-direction: column;
+}

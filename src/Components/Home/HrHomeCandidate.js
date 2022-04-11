@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../assets/css/HrHomeCandidate.css";
+// import "../assets/css/HrHomeCandidate.css";
+import './HrHomeCandidate.css'
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as DeleteIcon } from "../assets/icons/delete-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
@@ -28,14 +29,14 @@ function HrHomeCandidate({ data }) {
       <td>{data.technology}</td>
       <td>{data.createdCourse}</td>
       <td>
-        {data.courseAccess ? <>Access</> : <>Deny</>}
+        {data.status ? <>Access</> : <>Deny</>}
         <DownArrow
           className="hrHomeCandidate-downArrow"
           onClick={() => setSubMenu(!subMenu)}
         />
         {subMenu && (
           <div className="hrHomeCandidate-menu">
-            {data.courseAccess ? (
+            {data.status ? (
               <>
                 <li>Access</li>
                 <li>Deny</li>

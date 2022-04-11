@@ -24,7 +24,7 @@ function Login(props) {
 
   useEffect(() => {
     if (userSignin && userSignin.userInfo) {
-      props.history.push("/home");
+      props.history.push("/dashboard");
     }
     console.log("userSignin.userInfo", userSignin);
   }, [userSignin, props.history]);

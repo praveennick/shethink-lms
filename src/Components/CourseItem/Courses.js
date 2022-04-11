@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
-import "../assets/css/Courses.css";
+// import "../assets/css/Courses.css";
+import './Courses.css'
 import { ReactComponent as CourseDesign } from "../assets/images/course-design.svg";
 import { ReactComponent as CourseBook } from "../assets/images/Reading A Book.svg";
 import { useDispatch, useSelector } from "react-redux";
