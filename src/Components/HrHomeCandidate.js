@@ -14,12 +14,12 @@ function HrHomeCandidate({ data }) {
   const [subMenu, setSubMenu] = useState(false);
 
   const handleDelete = (id) => {
-    // dispatch(deleteCandidate(userSignin.userInfo, id));  
+    // dispatch(deleteCandidate(userSignin.userInfo, id));
     // const filteredCandidateList = candidatesList.filter(
-      //   (item) => item.id !== id
-      // );
-      // dispatch(candidatesList(userSignin.filteredCandidateList));
-      console.log('here')
+    //   (item) => item.id !== id
+    // );
+    // dispatch(candidatesList(userSignin.filteredCandidateList));
+    console.log("here");
   };
   return (
     <tr className="hrHomeCandidate">
@@ -28,14 +28,14 @@ function HrHomeCandidate({ data }) {
       <td>{data.technology}</td>
       <td>{data.createdCourse}</td>
       <td>
-        {(data.courseAccess==='Access') ? <>Access</> : <>Deny</>}
+        {data.courseAccess === "Access" ? <>Access</> : <>Deny</>}
         <DownArrow
           className="hrHomeCandidate-downArrow"
           onClick={() => setSubMenu(!subMenu)}
         />
         {subMenu && (
           <div className="hrHomeCandidate-menu">
-            {(data.courseAccess === 'Access')? (
+            {data.courseAccess === "Access" ? (
               <>
                 <li>Access</li>
                 <li>Deny</li>
