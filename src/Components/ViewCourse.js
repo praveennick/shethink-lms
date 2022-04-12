@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../assets/css/ViewCourse.css";
 
 import { ReactComponent as LeftArrow } from "../assets/icons/left-arrow.svg";
@@ -12,23 +12,36 @@ import viewCourseMedia1 from "../assets/images/viewCourse-banner-1.png";
 import CommentItem from "./CommentItem";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { addCourseComment } from "../redux/actions/user.actions";
 
+function ViewCourse({ hello }) {
+  const [comment, setComment] = useState();
 
-function ViewCourse() {
+  let courseID = localStorage.getItem("courseID");
+  console.log(courseID, "hai");
+
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
   const addComments = useSelector((state)=>state.addCourseComment)
   console.log("comments",addComments)
 
 
-  const handleInput =(e)=>{
-    const input = e.target.value
-  }
+  const comments = useSelector((state) => state.addCourseComment);
 
-  const handleAddComment=()=>{
-    //call add api
-  }
+  const postComment = (event) => {
+    event.preventDefault();
+    dispatch(
+      addCourseComment(
+        { message: comment, courseID: courseID },
+        userSignin.userInfo
+      )
+    );
+    setComment("");
+  };
 
+  useEffect(() => {
+    console.log("comments", comments);
+  }, []);
   return (
     <div className="viewCourse">
       <div className="viewCourse-content">
@@ -89,19 +102,19 @@ function ViewCourse() {
           <div className="viewCourse-inputField-with-icon">
             <div className="viewCourse-inputField-icons" >
               <SmileLogo className="viewCourse-smileLogo" />
-              <SendLogo className="viewCourse-sendLogo" onClick={handleAddComment} />
+              <SendLogo className="viewCourse-sendLogo" onClick={postComment} />
             </div>
             <input
               type="text"
               className="viewCourse-inputField"
               placeholder="Type a message..."
-              onChange={handleInput}
+              onChange={(e) => setComment(e.target.value)}
+              value={comment}
             />
           </div>
         </div>
 
         <CommentItem />
-       
       </div>
     </div>
   );
