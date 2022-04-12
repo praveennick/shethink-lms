@@ -8,6 +8,7 @@ import {
   deleteCandidateReducer,
   addCandidateReducer,
   courseListReducer,
+  addCommentReducer,
 } from "./reducers/user.reducer";
 
 const initialState = {
@@ -25,6 +26,7 @@ const reducers = combineReducers({
   deleteCandidate: deleteCandidateReducer,
   addCandidate: addCandidateReducer,
   courseList: courseListReducer,
+  addCourseComment:addCommentReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -10,7 +10,6 @@ import {
   // GET_SINGLE_CANDIDATE_REQUEST,
   // GET_SINGLE_CANDIDATE_SUCCESS,
   // GET_SINGLE_CANDIDATE_FAILURE,
-
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
@@ -19,15 +18,17 @@ import {
   POST_ADD_CANDIDATE_SUCCESS,
   POST_ADD_CANDIDATE_FAILURE,
 
-
   GET_COURSE_LIST_REQUEST,
   GET_COURSE_LIST_SUCCESS,
   GET_COURSE_LIST_FAILURE,
+
+  POST_ADD_COURSE_COMMENT_REQUEST,
+  POST_ADD_COURSE_COMMENT_SUCCESS,
+  POSt_ADD_COURSE_COMMENT_FAILURE,
 } from "../../constants";
 
 import axiosInstance from "../../api";
 import { async } from "rxjs";
-
 
 export const userSigninAction = (requestBody) => async (dispatch) => {
   dispatch({
@@ -112,16 +113,17 @@ export const candidatesList = (userInfo) => async (dispatch) => {
 //   }
 // };
 
-
-
-export const deleteCandidate = (userInfo,candidateId) => async (dispatch) => {
+export const deleteCandidate = (userInfo, candidateId) => async (dispatch) => {
   dispatch({ type: DELETE_CANDIDATE_REQUEST });
   try {
-    const { data } = await axiosInstance.delete(`/candidate?id=${candidateId}`, {
-      headers: {
-        Authorization: `Bearer ${userInfo.token}`,
-      },
-    });
+    const { data } = await axiosInstance.delete(
+      `/candidate?id=${candidateId}`,
+      {
+        headers: {
+          Authorization: `Bearer ${userInfo.token}`,
+        },
+      }
+    );
     dispatch({
       type: DELETE_CANDIDATE_SUCCESS,
     });
@@ -152,7 +154,6 @@ export const addCandidate = (userInfo) => async (dispatch) => {
   }
 };
 
-
 export const courseList = (userInfo) => async (dispatch) => {
   dispatch({ type: GET_COURSE_LIST_REQUEST });
   try {
@@ -168,6 +169,25 @@ export const courseList = (userInfo) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_COURSE_LIST_FAILURE,
+      error: error,
+    });
+  }
+};
+
+export const addCourseComment = (requestBody) => async (dispatch) => {
+  dispatch({
+    type: POST_ADD_COURSE_COMMENT_REQUEST,
+  });
+  try {
+    const { data } = await axiosInstance.post("/comment", requestBody);
+    dispatch({
+      type: POST_ADD_COURSE_COMMENT_SUCCESS,
+      commentInfo: data.data,
+    });
+  }
+  catch (error) {
+    dispatch({
+      type: POSt_ADD_COURSE_COMMENT_FAILURE,
       error: error,
     });
   }

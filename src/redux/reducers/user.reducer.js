@@ -11,16 +11,15 @@ import {
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
-
   POST_ADD_CANDIDATE_REQUEST,
   POST_ADD_CANDIDATE_SUCCESS,
   POST_ADD_CANDIDATE_FAILURE,
-
   GET_COURSE_LIST_REQUEST,
   GET_COURSE_LIST_SUCCESS,
   GET_COURSE_LIST_FAILURE,
-
-  
+  POST_ADD_COURSE_COMMENT_REQUEST,
+  POST_ADD_COURSE_COMMENT_SUCCESS,
+  POSt_ADD_COURSE_COMMENT_FAILURE,
 } from "../../constants";
 
 export const userReducer = (
@@ -33,6 +32,24 @@ export const userReducer = (
     case USER_SIGNIN_SUCCESS:
       return { loading: false, userInfo: action.userInfo };
     case USER_SIGNIN_FAILURE:
+      return { loading: false, error: action.error };
+    default:
+      return currentState;
+  }
+};
+
+export const addCommentReducer = (
+  currentState = { loading: true, commentInfo: null },
+  action
+) => {
+  console.log("commentInfo", action.commentInfo);
+  switch (action.type) {
+    case POST_ADD_COURSE_COMMENT_REQUEST:
+      return { loading: true };
+    case POST_ADD_COURSE_COMMENT_SUCCESS:
+      return { loading: false, commentInfo: action.commentInfo };
+
+    case POSt_ADD_COURSE_COMMENT_FAILURE:
       return { loading: false, error: action.error };
     default:
       return currentState;
@@ -119,8 +136,6 @@ export const addCandidateReducer = (
       return currentState;
   }
 };
-
-
 
 export const courseListReducer = (
   currentState = { loading: true, userInfo: null },
