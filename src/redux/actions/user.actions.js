@@ -7,9 +7,10 @@ import {
   GET_CANDIDATE_SUCCESS,
   GET_CANDIDATE_FAILURE,
 
-  // GET_SINGLE_CANDIDATE_REQUEST,
-  // GET_SINGLE_CANDIDATE_SUCCESS,
-  // GET_SINGLE_CANDIDATE_FAILURE,
+  GET_SINGLE_CANDIDATE_REQUEST,
+  GET_SINGLE_CANDIDATE_SUCCESS,
+  GET_SINGLE_CANDIDATE_FAILURE,
+
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
@@ -52,7 +53,6 @@ export const userSigninAction = (requestBody) => async (dispatch) => {
 
 export const getTechAction = (userInfo) => async (dispatch) => {
   dispatch({ type: "GET_TECH_REQUEST" });
-  console.log("user", userInfo.token);
   try {
     const { data } = await axiosInstance.get("/technology", {
       headers: { Authorization: `Bearer ${userInfo.token}` },
@@ -89,29 +89,29 @@ export const candidatesList = (userInfo) => async (dispatch) => {
   }
 };
 
-// export const singleCandidate = (userInfo) => async (dispatch) => {
-//   dispatch({ type: GET_SINGLE_CANDIDATE_REQUEST });
-//   try {
-//     const { data } = await axiosInstance.get(
-//       "candidate?id=6231d1b097869c6b7c5bc525",
-//       {
-//         headers: {
-//           Authorization: `Bearer ${userInfo.token}`,
-//         },
-//       }
-//     );
+export const singleCandidate = (candidateInfo) => async (dispatch) => {
+  dispatch({ type: GET_SINGLE_CANDIDATE_REQUEST });
+  try {
+    const { data } = await axiosInstance.get(
+      `candidate?${candidateInfo.id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${candidateInfo.token}`,
+        },
+      }
+    );
 
-//     dispatch({
-//       type: GET_SINGLE_CANDIDATE_SUCCESS,
-//       payload: data.data,
-//     });
-//   } catch (error) {
-//     dispatch({
-//       type: GET_SINGLE_CANDIDATE_FAILURE,
-//       error: error,
-//     });
-//   }
-// };
+    dispatch({
+      type: GET_SINGLE_CANDIDATE_SUCCESS,
+      candidateInfo: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_SINGLE_CANDIDATE_FAILURE,
+      error: error,
+    });
+  }
+};
 
 export const deleteCandidate = (userInfo, candidateId) => async (dispatch) => {
   dispatch({ type: DELETE_CANDIDATE_REQUEST });
@@ -178,6 +178,7 @@ export const addCourseComment = (requestBody) => async (dispatch) => {
   dispatch({
     type: POST_ADD_COURSE_COMMENT_REQUEST,
   });
+  console.log({requestBody})
   try {
     const { data } = await axiosInstance.post("/comment", requestBody);
     dispatch({

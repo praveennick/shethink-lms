@@ -17,8 +17,17 @@ import { useDispatch, useSelector } from "react-redux";
 function ViewCourse() {
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
-  const comments = useSelector((state)=>state.addCourseComment)
-  console.log("comments",comments)
+  const addComments = useSelector((state)=>state.addCourseComment)
+  console.log("comments",addComments)
+
+
+  const handleInput =(e)=>{
+    const input = e.target.value
+  }
+
+  const handleAddComment=()=>{
+    //call add api
+  }
 
   return (
     <div className="viewCourse">
@@ -78,14 +87,15 @@ function ViewCourse() {
             Comment
           </label>
           <div className="viewCourse-inputField-with-icon">
-            <div className="viewCourse-inputField-icons">
+            <div className="viewCourse-inputField-icons" >
               <SmileLogo className="viewCourse-smileLogo" />
-              <SendLogo className="viewCourse-sendLogo" />
+              <SendLogo className="viewCourse-sendLogo" onClick={handleAddComment} />
             </div>
             <input
               type="text"
               className="viewCourse-inputField"
               placeholder="Type a message..."
+              onChange={handleInput}
             />
           </div>
         </div>

@@ -47,7 +47,7 @@ function App() {
               <Route exact path="/newCourse" component={NewCourse} />
               <Route
                 exact
-                path="/candidateProfile"
+                path="/candidateProfile/:id"
                 component={CandidateProfile}
               />
               <Route exact path="/internHome" component={InternHome} />
