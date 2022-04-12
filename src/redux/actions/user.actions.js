@@ -2,7 +2,6 @@ import {
   USER_SIGNIN_REQUEST,
   USER_SIGNIN_SUCCESS,
   USER_SIGNIN_FAILURE,
-
   GET_CANDIDATE_REQUEST,
   GET_CANDIDATE_SUCCESS,
   GET_CANDIDATE_FAILURE,
@@ -13,15 +12,12 @@ import {
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
-
   POST_ADD_CANDIDATE_REQUEST,
   POST_ADD_CANDIDATE_SUCCESS,
   POST_ADD_CANDIDATE_FAILURE,
-
   GET_COURSE_LIST_REQUEST,
   GET_COURSE_LIST_SUCCESS,
   GET_COURSE_LIST_FAILURE,
-
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
   POSt_ADD_COURSE_COMMENT_FAILURE,
@@ -174,18 +170,23 @@ export const courseList = (userInfo) => async (dispatch) => {
   }
 };
 
-export const addCourseComment = (requestBody) => async (dispatch) => {
+export const addCourseComment = (requestBody, userInfo) => async (dispatch) => {
+  console.log(requestBody, "req");
+  console.log(userInfo, "user");
   dispatch({
     type: POST_ADD_COURSE_COMMENT_REQUEST,
   });
   try {
-    const { data } = await axiosInstance.post("/comment", requestBody);
+    const { data } = await axiosInstance.post("/comment", requestBody, {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
     dispatch({
       type: POST_ADD_COURSE_COMMENT_SUCCESS,
       commentInfo: data.data,
     });
-  }
-  catch (error) {
+  } catch (error) {
     dispatch({
       type: POSt_ADD_COURSE_COMMENT_FAILURE,
       error: error,
