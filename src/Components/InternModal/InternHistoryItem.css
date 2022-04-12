@@ -1,0 +1,46 @@
+.internHistoryItem {
+  border: 1px solid #e1e1e1;
+  border-radius: 5px;
+  width: 45%;
+  padding: 20px;
+  margin-top: 20px;
+  position: relative;
+}
+.internHistoryItem-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.internHistoryItem-task-detail {
+  margin: 20px 0;
+}
+.internHistoryItem-footer {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+.internHistoryItem-footer2 {
+  margin-left: 10px;
+}
+.internHistoryItem-menu {
+  top: 30%;
+  right: 5%;
+  z-index: 1;
+  position: absolute;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 25px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  padding: 10px;
+}
+.internHistoryItem-menu li {
+  list-style-type: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+}
+.internHistoryItem-menu li:hover {
+  background: rgba(103, 80, 164, 0.12);
+  border-radius: 5px;
+  color: #6750a4;
+}

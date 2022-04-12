@@ -1,0 +1,44 @@
+.module-header {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 10px;
+  padding: 20px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.module-header-design {
+  width: auto;
+  height: 25vh;
+}
+.module-header-content {
+  width: 60%;
+}
+.module-header-title {
+  /* border: 1px solid black; */
+}
+.module-header-description {
+  color: #8d8d8f;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 27px;
+  text-transform: capitalize;
+  margin: 15px 0;
+}
+
+.module-header-btn {
+  text-decoration: none;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.module-header-doc-sign {
+  width: auto;
+  height: 25vh;
+}

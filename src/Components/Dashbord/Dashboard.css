@@ -1,0 +1,42 @@
+
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+
+.dashboard-label {
+  width: 30%;
+  height: 150px;
+  background: linear-gradient(115.78deg, #29323c 0%, #485563 99.38%);
+  border-radius: 22px;
+}
+.dashboard-label-design {
+  position: absolute;
+}
+.dashboard-label-headings {
+  position: relative;
+  top: 48%;
+  left: 8%;
+}
+.dashboard-label-headings h2 {
+  color: white;
+  margin-bottom: 5px;
+}
+.dashboard-label-headings p {
+  color: #c3c6ca;
+}
+.dashboard-header-design {
+  width: 70%;
+}
+.dashboad-content {
+  display: flex;
+  justify-content: space-between;
+}
+.dashboard-left {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}

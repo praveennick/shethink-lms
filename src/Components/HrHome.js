@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../assets/css/HrHome.css";
+// import CandidateItem from "./CandidateItem";
 import HrHomeCandidate from "./HrHomeCandidate";
 
 import InputField from "./InputField";
-
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
-
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as ModalDesign } from "../assets/icons/modal-bg-design.svg";
 import ChipTechnology from "./ChipTechnology";
+import { candidatesList } from "../redux/actions/user.actions";
 import { Link } from "react-router-dom";
 
 function HrHome() {
+  const userSignin = useSelector((state) => state.userSignin);
   const [subMenu, setSubMenu] = useState(false);
   {
     /* add new technology */
@@ -27,6 +29,11 @@ function HrHome() {
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
 
+  //Candidate Array
+  const dispatch = useDispatch();
+  const candidateItems = useSelector((state) => state.candidatesList);
+  console.log(candidateItems);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -40,6 +47,11 @@ function HrHome() {
     overFlow: "hidden",
     p: 0,
   };
+
+  useEffect(() => {
+    console.log("candidateItems", candidateItems);
+    dispatch(candidatesList(userSignin.userInfo));
+  }, []);
 
   return (
     <div className="hrHome">
@@ -154,18 +166,15 @@ function HrHome() {
             <th>Status</th>
             <th>Delete</th>
           </tr>
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
-          <HrHomeCandidate />
+          {candidateItems.candidatesInfo &&
+            candidateItems.candidatesInfo.map((item, i) => {
+              return (
+                <>
+                  {console.log("item", item)}
+                  <HrHomeCandidate data={item} />
+                </>
+              );
+            })}
         </tbody>
       </table>
     </div>

@@ -8,13 +8,18 @@ import { ReactComponent as HeartLogo } from "../assets/icons/heart.svg";
 import { ReactComponent as CommentLogo } from "../assets/icons/comment-icon.svg";
 import { ReactComponent as SmileLogo } from "../assets/icons/smile.svg";
 import { ReactComponent as SendLogo } from "../assets/icons/send-icon.svg";
-
 import viewCourseMedia1 from "../assets/images/viewCourse-banner-1.png";
 import CommentItem from "./CommentItem";
-
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+
 
 function ViewCourse() {
+  const dispatch = useDispatch();
+  const userSignin = useSelector((state) => state.userSignin);
+  const comments = useSelector((state)=>state.addCourseComment)
+  console.log("comments",comments)
+
   return (
     <div className="viewCourse">
       <div className="viewCourse-content">
@@ -86,9 +91,7 @@ function ViewCourse() {
         </div>
 
         <CommentItem />
-        <CommentItem />
-        <CommentItem />
-        <CommentItem />
+       
       </div>
     </div>
   );

@@ -1,0 +1,28 @@
+.internHistory {
+}
+.internHistory-search {
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+.internHistory-search-label {
+  font-weight: 600;
+  margin-right: 20px;
+}
+.internHistory-search-bar {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.internHistory-search-icon {
+  position: absolute;
+  right: 7px;
+}
+.internHistory-items {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.internHistoryItem-threedots {
+  cursor: pointer;
+}

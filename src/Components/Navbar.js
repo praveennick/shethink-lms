@@ -5,20 +5,36 @@ import { ReactComponent as Setting } from "../assets/icons/setting.svg";
 import Notification from "./Notification";
 
 import { Link, useHistory } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { USER_SIGNIN_SUCCESS } from "../constants";
 
 function Navbar() {
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const [showNotification, setShowNotification] = useState(false);
 
-  const [navName, setNavName] = useState("");
+  const [navName, setNavName] = useState(null);
 
   useEffect(() => {
+    // setNavName(localStorage.getItem("name"))
     setNavName(localStorage.getItem("name"));
-    // console.log(navName);
+    // window.addEventListener('storage', storageEventHandler, false);
   }, []);
 
+//   function storageEventHandler() {
+//     console.log("hi from storageEventHandler")
+//     // setLoggedInName(localStorage.getItem('name') || null)
+//     setNavName((localStorage.getItem("name")) || null);
+
+// }
+
   const logoutUser = () => {
+    dispatch({
+      type: USER_SIGNIN_SUCCESS,
+      payload: null,
+    });
+    // localStorage.clear();
     localStorage.removeItem("userInfo");
     history.push("/");
   };

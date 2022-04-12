@@ -1,0 +1,47 @@
+.internHomeCandidate {
+  background: #f9f9f9;
+  position: relative;
+}
+.internHomeCandidate-downArrow {
+  stroke: #1c1b1f;
+  width: 16px;
+  height: 8px;
+  cursor: pointer;
+}
+
+.internHomeCandidate-menu {
+  right: 14%;
+  z-index: 1;
+  position: absolute;
+  background: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.05), 0px 25px 35px rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  padding: 10px;
+}
+.internHomeCandidate-menu li {
+  list-style-type: none;
+  padding: 10px;
+  cursor: pointer;
+  text-align: center;
+}
+.internHomeCandidate-menu li:hover {
+  background: rgba(103, 80, 164, 0.12);
+  border-radius: 5px;
+  color: #6750a4;
+}
+.internHomeCandidate-new-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.internHomeCandidate-new {
+  color: #258ff1;
+  font-size: 10px;
+  transform: translateY(-40%);
+  font-weight: 600;
+}
+.internHomeCandidate-deleteIcon {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}

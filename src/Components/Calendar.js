@@ -1,40 +1,25 @@
 import React from "react";
-
+import moment from "moment";
 import "../assets/css/Calendar.css";
 
 function Calendar() {
+  const week = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return (
     <div className="calandar">
-      <h3>March 2022</h3>
+      <h3>{moment().format("MMM YYYY")}</h3>
       <div className="calandar-items">
-        <div className="calandar-item">
-          <p className="calandar-item-week">Sun</p>
-          <p className="calandar-item-day">1</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Mon</p>
-          <p className="calandar-item-day">2</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Tue</p>
-          <p className="calandar-item-day">3</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Wed</p>
-          <p className="calandar-item-day">4</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Thu</p>
-          <p className="calandar-item-day">5</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Fri</p>
-          <p className="calandar-item-day">6</p>
-        </div>
-        <div className="calandar-item">
-          <p className="calandar-item-week">Sat</p>
-          <p className="calandar-item-day">7</p>
-        </div>
+             {console.log("today",moment().format('ddd'))}
+        {week?.map((item, index) => {
+          return (
+            <>
+              {/* <div className="calandar-item"> */}
+              <div className={moment().format('ddd')===item?"calandar-item-today":"calandar-item"}>
+                <p className="calandar-item-week">{item}</p>
+                <p className="calandar-item-day">{moment().startOf("week").add(index, "day").date()}</p>
+              </div>
+            </>
+          );
+        })}
       </div>
     </div>
   );

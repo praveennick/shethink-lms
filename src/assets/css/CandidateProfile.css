@@ -9,10 +9,7 @@
   margin-right: 20px;
   border: none;
 }
-.candidateProfile-name-designation {
-}
-.candidateProfile-name {
-}
+
 .candidateProfile-designation {
   font-size: 14px;
 }
@@ -56,9 +53,7 @@
   top: 100%;
   height: 38px;
 }
-.taskplay-icon {
-  /* fill: #007b40; */
-}
+
 .task-completed {
   fill: #007b40;
   color: #007b40;
@@ -81,8 +76,7 @@
 .candidateProfile-right {
   width: 60%;
 }
-.candidateProfile-attendance {
-}
+
 
 .candidateProfile-calendar {
   background: #f7f2fa;
@@ -95,8 +89,9 @@
 }
 .full-calendar {
   width: 45%;
-  height: 20vh;
-  border-collapse: collapse;
+  /* height: 20vh; */
+  background:transparent !important;
+  border: none!important;
   color: #030229;
 }
 .bg-color {

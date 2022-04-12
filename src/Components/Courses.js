@@ -1,10 +1,26 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../assets/css/Courses.css";
 import { ReactComponent as CourseDesign } from "../assets/images/course-design.svg";
 import { ReactComponent as CourseBook } from "../assets/images/Reading A Book.svg";
+import { useDispatch, useSelector } from "react-redux";
 import CourseItem from "./CourseItem";
+import { courseList, pageNameAction } from "../redux/actions/user.actions";
 
 function Courses() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const dispatch = useDispatch();
+  const listOfCourses = useSelector((state) => state.courseList);
+  const pageName = useSelector((state) => state.pageNameAction);
+
+  
+  useEffect(() => {
+    dispatch(courseList(userSignin.userInfo));
+  }, []);
+
+  useEffect(() => {
+    console.log("listOfCourses", listOfCourses);
+  }, [listOfCourses]);
+
   return (
     <div className="courses">
       <div className="coursesBanner">
@@ -36,41 +52,10 @@ function Courses() {
           <option value="angular">Angular</option>
         </select>
       </div>
-      <CourseItem
-        title={"fundamental of user experince design"}
-        name={"Praveen Kumar"}
-        discription={
-          "in this video lecture you get some basic idea of user experince design."
-        }
-      />
-      <CourseItem
-        title={"fundamental of user experince design"}
-        name={"Praveen Kumar"}
-        discription={
-          "in this video lecture you get some basic idea of user experince design."
-        }
-      />
-      <CourseItem
-        title={"fundamental of user experince design"}
-        name={"Praveen Kumar"}
-        discription={
-          "in this video lecture you get some basic idea of user experince design."
-        }
-      />
-      <CourseItem
-        title={"fundamental of user experince design"}
-        name={"Praveen Kumar"}
-        discription={
-          "in this video lecture you get some basic idea of user experince design."
-        }
-      />
-      <CourseItem
-        title={"fundamental of user experince design"}
-        name={"Praveen Kumar"}
-        discription={
-          "in this video lecture you get some basic idea of user experince design."
-        }
-      />
+
+      {listOfCourses.userInfo?.map((item, index) => {
+        return <CourseItem key={item.courseID} data={item} />;
+      })}
     </div>
   );
 }

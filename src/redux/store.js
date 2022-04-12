@@ -1,16 +1,32 @@
 import { createStore, applyMiddleware, combineReducers, compose } from "redux";
 import thunk from "redux-thunk";
-import { getTechReducer, userReducer } from "./reducers/user.reducer";
+import {
+  getTechReducer,
+  userReducer,
+  candidatesListReducer,
+  // singleCandidateReducer,
+  deleteCandidateReducer,
+  addCandidateReducer,
+  courseListReducer,
+  addCommentReducer,
+} from "./reducers/user.reducer";
 
 const initialState = {
   userSignin: localStorage.getItem("userInfo")
     ? { userInfo: JSON.parse(localStorage.getItem("userInfo")) }
     : null,
+   
 };
 
 const reducers = combineReducers({
   userSignin: userReducer,
   techRequest: getTechReducer,
+  candidatesList: candidatesListReducer,
+  // singleCandidate : singleCandidateReducer,
+  deleteCandidate: deleteCandidateReducer,
+  addCandidate: addCandidateReducer,
+  courseList: courseListReducer,
+  addCourseComment:addCommentReducer,
 });
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -17,7 +17,6 @@ import ScrollToTop from "./Components/ScrollToTop";
 import ViewModule from "./Components/ViewModule";
 import CreateModule from "./Components/CreateModule";
 import EditModule from "./Components/EditModule";
-import Dummy from "./Components/Dummy";
 import InternHistory from "./Components/InternHistory";
 import CandidateProfile from "./Components/CandidateProfile";
 import InternHome from "./Components/InternHome";
@@ -29,7 +28,6 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Login} />
-          <Route exact path="/dummy" component={Dummy} />
           <div>
             <ScrollToTop />
             <Sidebar />
