@@ -96,7 +96,7 @@ export const singleCandidate = (candidateInfo) => async (dispatch) => {
         },
       }
     );
-
+console.log("data",data)
     dispatch({
       type: GET_SINGLE_CANDIDATE_SUCCESS,
       candidateInfo: data.data,

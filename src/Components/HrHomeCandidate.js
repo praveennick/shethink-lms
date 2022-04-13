@@ -14,21 +14,16 @@ function HrHomeCandidate({ data , onClick}) {
 
   const [subMenu, setSubMenu] = useState(false);
 
-  const handleDelete = (id) => {
+  const handleDelete = (e,id) => {
+    e.preventDefault();
     console.log(id,"id")
-    axios.delete(`https:/shethink/v1/candidate?${id}`)  
-    .then(res => {  
-      console.log(res,"res");  
-      console.log(res.data,"data");  
-    }) 
-    dispatch(candidatesList(userSignin.userInfo));
+    
 
     // dispatch(deleteCandidate(userSignin.userInfo, id));  
     // const filteredCandidateList = candidatesList.filter(
     //   (item) => item.id !== id
     // );
     // dispatch(candidatesList(userSignin.filteredCandidateList));
-    console.log("here");
   };
   return (
     <tr className="hrHomeCandidate" style={{cursor:"pointer"}} onClick={onClick}>
@@ -61,7 +56,7 @@ function HrHomeCandidate({ data , onClick}) {
       <td>
         <DeleteIcon
           className="hrHomeCandidate-deleteIcon"
-          onClick={() => handleDelete(data.id)}
+          onClick={(e) => handleDelete(data.id,e)}
         />
       </td>
     </tr>

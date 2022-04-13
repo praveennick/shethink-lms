@@ -58,9 +58,9 @@ function HrHome() {
 
 
 
-const handleSingleCandidate=(index)=>{
-  console.log("index",index)
-  history.push(`/candidateProfile/id=5`)
+const handleSingleCandidate=(id)=>{
+  // console.log("candidate id",id)
+  history.push(`/candidateProfile/id=${id}`)
 }
 
   return (
@@ -180,7 +180,7 @@ const handleSingleCandidate=(index)=>{
             candidateItems.candidatesInfo.map((item, index) => {
               return (
                 < >
-                  <HrHomeCandidate data={item} onClick={()=>handleSingleCandidate(index)} />
+                  <HrHomeCandidate data={item} onClick={()=>handleSingleCandidate(item.id)} />
                 </>
               );
             })}
