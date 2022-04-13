@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Calendar from "react-calendar";
 import "../assets/css/CandidateProfile.css";
@@ -7,11 +7,28 @@ import { ReactComponent as LeftArrow } from "../assets/icons/left-arrow.svg";
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import TaskItem from "./TaskItem";
 import moment from 'moment';
+import { useDispatch, useSelector } from "react-redux";
+import { useParams } from 'react-router-dom';
+import { singleCandidate } from "../redux/actions/user.actions";
+
 
 function CandidateProfile() {
   const [value, onChange] = useState(new Date());
-  // const d = new Date();
-  // let fullYear = d.getFullYear();
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const userSignin = useSelector((state) => state.userSignin);
+  const candidate = useSelector((state) => state.singleCandidate);
+  console.log("candidate information",candidate)
+
+
+
+  useEffect(() => {
+    let obj = {
+      id,
+      token: userSignin.userInfo.token
+    }
+    dispatch(singleCandidate(obj));
+  }, []);
   return (
     <div className="candidateProfile">
       <div className="candidateProfile-header-left">
@@ -19,9 +36,9 @@ function CandidateProfile() {
           <LeftArrow />
         </Link>
         <div className="candidateProfile-name-designation">
-          <h3 className="candidateProfile-name">Praveen Kumar</h3>
+          <h3 className="candidateProfile-name">{candidate?.candidateInfo?.username}</h3>
           <p className="candidateProfile-designation">
-            Designation-React js Developer
+            Designation-{candidate?.candidateInfo?.designation}
           </p>
         </div>
       </div>

@@ -22,11 +22,14 @@ function ViewCourse({ hello }) {
 
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
+  const addComments = useSelector((state)=>state.addCourseComment)
+  console.log("comments",addComments)
+
+
   const comments = useSelector((state) => state.addCourseComment);
 
   const postComment = (event) => {
     event.preventDefault();
-    // console.log("comment", comment);
     dispatch(
       addCourseComment(
         { message: comment, courseID: courseID },
@@ -97,7 +100,7 @@ function ViewCourse({ hello }) {
             Comment
           </label>
           <div className="viewCourse-inputField-with-icon">
-            <div className="viewCourse-inputField-icons">
+            <div className="viewCourse-inputField-icons" >
               <SmileLogo className="viewCourse-smileLogo" />
               <SendLogo className="viewCourse-sendLogo" onClick={postComment} />
             </div>

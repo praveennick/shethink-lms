@@ -5,9 +5,9 @@ import {
   GET_CANDIDATE_REQUEST,
   GET_CANDIDATE_SUCCESS,
   GET_CANDIDATE_FAILURE,
-  // GET_SINGLE_CANDIDATE_REQUEST,
-  // GET_SINGLE_CANDIDATE_SUCCESS,
-  // GET_SINGLE_CANDIDATE_FAILURE,
+  GET_SINGLE_CANDIDATE_REQUEST,
+  GET_SINGLE_CANDIDATE_SUCCESS,
+  GET_SINGLE_CANDIDATE_FAILURE,
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
@@ -88,21 +88,22 @@ export const candidatesListReducer = (
   }
 };
 
-// export const singleCandidateReducer = (
-//   currentState = { loading: true, candidatesInfo: null },
-//   action
-// ) => {
-//   switch (action.type) {
-//     case GET_SINGLE_CANDIDATE_REQUEST:
-//       return { loading: true };
-//     case GET_SINGLE_CANDIDATE_SUCCESS:
-//       return { loading: false, candidatesInfo: action.payload };
-//     case GET_SINGLE_CANDIDATE_FAILURE:
-//       return { loading: false, error: action.error };
-//     default:
-//       return currentState;
-//   }
-// };
+export const singleCandidateReducer = (
+  currentState = { loading: true, candidateInfo: null },
+  action
+) => {
+  console.log("action",action)
+  switch (action.type) {
+    case GET_SINGLE_CANDIDATE_REQUEST:
+      return { loading: true };
+    case GET_SINGLE_CANDIDATE_SUCCESS:
+      return { loading: false, candidateInfo: action.candidateInfo };
+    case GET_SINGLE_CANDIDATE_FAILURE:
+      return { loading: false, error: action.error };
+    default:
+      return currentState;
+  }
+};
 
 export const deleteCandidateReducer = (
   currentState = { loading: true },

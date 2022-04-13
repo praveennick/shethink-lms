@@ -12,8 +12,11 @@ import { ReactComponent as ModalDesign } from "../assets/icons/modal-bg-design.s
 import ChipTechnology from "./ChipTechnology";
 import { candidatesList } from "../redux/actions/user.actions";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 function HrHome() {
+  
+  const history = useHistory()
   const userSignin = useSelector((state) => state.userSignin);
   const [subMenu, setSubMenu] = useState(false);
   {
@@ -52,6 +55,13 @@ function HrHome() {
     console.log("candidateItems", candidateItems);
     dispatch(candidatesList(userSignin.userInfo));
   }, []);
+
+
+
+const handleSingleCandidate=(id)=>{
+  // console.log("candidate id",id)
+  history.push(`/candidateProfile/id=${id}`)
+}
 
   return (
     <div className="hrHome">
@@ -167,11 +177,10 @@ function HrHome() {
             <th>Delete</th>
           </tr>
           {candidateItems.candidatesInfo &&
-            candidateItems.candidatesInfo.map((item, i) => {
+            candidateItems.candidatesInfo.map((item, index) => {
               return (
-                <>
-                  {console.log("item", item)}
-                  <HrHomeCandidate data={item} />
+                < >
+                  <HrHomeCandidate data={item} onClick={()=>handleSingleCandidate(item.id)} />
                 </>
               );
             })}

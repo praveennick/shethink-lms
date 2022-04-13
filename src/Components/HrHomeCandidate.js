@@ -3,26 +3,30 @@ import "../assets/css/HrHomeCandidate.css";
 import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
 import { ReactComponent as DeleteIcon } from "../assets/icons/delete-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
+import axios from 'axios';  
 import { deleteCandidate } from "../redux/actions/user.actions";
 import { GET_CANDIDATE_SUCCESS } from "../constants";
 
-function HrHomeCandidate({ data }) {
+function HrHomeCandidate({ data , onClick}) {
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
   const candidatesList = useSelector((state) => state.candidatesList);
 
   const [subMenu, setSubMenu] = useState(false);
 
-  const handleDelete = (id) => {
-    // dispatch(deleteCandidate(userSignin.userInfo, id));
+  const handleDelete = (e,id) => {
+    e.preventDefault();
+    console.log(id,"id")
+    
+
+    // dispatch(deleteCandidate(userSignin.userInfo, id));  
     // const filteredCandidateList = candidatesList.filter(
     //   (item) => item.id !== id
     // );
     // dispatch(candidatesList(userSignin.filteredCandidateList));
-    console.log("here");
   };
   return (
-    <tr className="hrHomeCandidate">
+    <tr className="hrHomeCandidate" style={{cursor:"pointer"}} onClick={onClick}>
       <td>{data.username}</td>
       <td>{data.designation}</td>
       <td>{data.technology}</td>
@@ -52,7 +56,7 @@ function HrHomeCandidate({ data }) {
       <td>
         <DeleteIcon
           className="hrHomeCandidate-deleteIcon"
-          onClick={() => handleDelete(data.id)}
+          onClick={(e) => handleDelete(data.id,e)}
         />
       </td>
     </tr>
