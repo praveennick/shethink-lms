@@ -119,9 +119,11 @@ th {
   list-style-type: none;
   color: #6750a4;
 }
-
+.hrHome-nav-filter-menu {
+  position: relative;
+}
 .hrHome-nav-menu {
-  right: 63%;
+  right: 22%;
   z-index: 1;
   position: absolute;
   background: #ffffff;

@@ -7,10 +7,12 @@ import InternModelWeek from "./InternModelWeek";
 import { Link } from "react-router-dom";
 
 function InternModel() {
-  const [weekComponent, setWeekComponent] = useState([<InternModelWeek week={1} />]);
+  const [weekComponent, setWeekComponent] = useState([
+    <InternModelWeek week={1} />,
+  ]);
   const handleAddMore = () => {
-    let weeksCount = weekComponent.length+1
-    setWeekComponent([...weekComponent, <InternModelWeek week={weeksCount}/>]);
+    let weeksCount = weekComponent.length + 1;
+    setWeekComponent([...weekComponent, <InternModelWeek week={weeksCount} />]);
   };
 
   return (
@@ -44,7 +46,7 @@ function InternModel() {
         </div>
         <div className="internModel-task-week-form">
           {/* <InternModelWeek /> */}
-         {weekComponent}
+          {weekComponent}
           <button className="internModel-addMore" onClick={handleAddMore}>
             Add more <AddMoreIcon />
           </button>

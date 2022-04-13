@@ -27,7 +27,7 @@ function HrHomeCandidate({ data }) {
       <td>{data.designation}</td>
       <td>{data.technology}</td>
       <td>{data.createdCourse}</td>
-      <td>
+      <td className="hrHomeCandidate-menu-box">
         {data.courseAccess === "Access" ? <>Access</> : <>Deny</>}
         <DownArrow
           className="hrHomeCandidate-downArrow"
