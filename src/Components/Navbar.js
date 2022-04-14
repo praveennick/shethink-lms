@@ -5,7 +5,7 @@ import { ReactComponent as Setting } from "../assets/icons/setting.svg";
 import Notification from "./Notification";
 
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch} from "react-redux";
 import { USER_SIGNIN_SUCCESS } from "../constants";
 
 function Navbar() {

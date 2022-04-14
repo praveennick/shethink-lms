@@ -38,7 +38,7 @@ function CandidateProfile() {
         <div className="candidateProfile-name-designation">
           <h3 className="candidateProfile-name">{candidate?.candidateInfo?.username}</h3>
           <p className="candidateProfile-designation">
-            Designation-{candidate?.candidateInfo?.designation}
+            Designation-{candidate?.candidateInfo?.username}
           </p>
         </div>
       </div>

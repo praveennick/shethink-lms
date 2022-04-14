@@ -14,11 +14,12 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCourseComment } from "../redux/actions/user.actions";
 
-function ViewCourse({ hello }) {
+function ViewCourse({ data }) {
   const [comment, setComment] = useState();
 
   let courseID = localStorage.getItem("courseID");
-  console.log(courseID, "hai");
+  console.log(courseID, "courseID");
+  console.log("datataaaa",data)
 
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);

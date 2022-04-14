@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 function CourseItem({ data }) {
   console.log(data.courseID, "courseID");
-  localStorage.setItem("courseID", data.courseID);
+  // localStorage.setItem("courseID", data.courseID);
   return (
     <div className="courseItem">
       <div className="courseItem-upper">
@@ -24,7 +24,7 @@ function CourseItem({ data }) {
       </div>
       <div className="courseItem-lower">
         <p className="courseItem-disc">discription- {data.courseDescription}</p>
-        <Link className="viewCourse-btn" to="/viewCourse" hello={"hello"}>
+        <Link className="viewCourse-btn" to="/viewCourse" data={data}>
           View Course
         </Link>
       </div>

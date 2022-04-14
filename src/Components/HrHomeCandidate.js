@@ -29,7 +29,7 @@ function HrHomeCandidate({ data , onClick}) {
     <tr className="hrHomeCandidate" style={{cursor:"pointer"}} onClick={onClick}>
       <td>{data.username}</td>
       <td>{data.designation}</td>
-      <td>{data.technology}</td>
+      <td>{data.technology.join(", ")}</td>
       <td>{data.createdCourse}</td>
       <td>
         {data.courseAccess === "Access" ? <>Access</> : <>Deny</>}
