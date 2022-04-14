@@ -1,6 +1,8 @@
 .hrHomeCandidate {
   background: #f9f9f9;
   position: relative;
+  border-radius: 5px;
+  overflow: hidden;
 }
 .hrHomeCandidate-downArrow {
   stroke: #1c1b1f;

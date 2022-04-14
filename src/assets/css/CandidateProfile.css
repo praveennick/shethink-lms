@@ -77,7 +77,6 @@
   width: 60%;
 }
 
-
 .candidateProfile-calendar {
   background: #f7f2fa;
   border-radius: 22px;
@@ -90,17 +89,17 @@
 .full-calendar {
   width: 45%;
   /* height: 20vh; */
-  background:transparent !important;
-  border: none!important;
+  background: transparent !important;
+  border: none !important;
   color: #030229;
 }
 .bg-color {
   color: white;
   background: #6750a4;
 }
-table tr td {
+/* table tr td {
   border-radius: 5px;
-}
+} */
 .candidateProfile-recent-activity {
   margin-top: 20px;
 }
