@@ -5,11 +5,9 @@ import {
   GET_CANDIDATE_REQUEST,
   GET_CANDIDATE_SUCCESS,
   GET_CANDIDATE_FAILURE,
-
   GET_SINGLE_CANDIDATE_REQUEST,
   GET_SINGLE_CANDIDATE_SUCCESS,
   GET_SINGLE_CANDIDATE_FAILURE,
-
   DELETE_CANDIDATE_REQUEST,
   DELETE_CANDIDATE_SUCCESS,
   DELETE_CANDIDATE_FAILURE,
@@ -88,15 +86,12 @@ export const candidatesList = (userInfo) => async (dispatch) => {
 export const singleCandidate = (candidateInfo) => async (dispatch) => {
   dispatch({ type: GET_SINGLE_CANDIDATE_REQUEST });
   try {
-    const { data } = await axiosInstance.get(
-      `candidate?${candidateInfo.id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${candidateInfo.token}`,
-        },
-      }
-    );
-console.log("data",data)
+    const { data } = await axiosInstance.get(`candidate?${candidateInfo.id}`, {
+      headers: {
+        Authorization: `Bearer ${candidateInfo.token}`,
+      },
+    });
+    console.log("data", data);
     dispatch({
       type: GET_SINGLE_CANDIDATE_SUCCESS,
       candidateInfo: data.data,
@@ -176,7 +171,7 @@ export const addCourseComment = (requestBody, userInfo) => async (dispatch) => {
   dispatch({
     type: POST_ADD_COURSE_COMMENT_REQUEST,
   });
-  console.log({requestBody})
+  console.log({ requestBody });
   try {
     const { data } = await axiosInstance.post("/comment", requestBody, {
       headers: {
@@ -194,4 +189,3 @@ export const addCourseComment = (requestBody, userInfo) => async (dispatch) => {
     });
   }
 };
-

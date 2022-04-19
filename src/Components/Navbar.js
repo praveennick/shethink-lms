@@ -5,16 +5,16 @@ import { ReactComponent as Setting } from "../assets/icons/setting.svg";
 import Notification from "./Notification";
 
 import { Link, useHistory } from "react-router-dom";
-import { useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { USER_SIGNIN_SUCCESS } from "../constants";
 
 function Navbar() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-  const [showNotification, setShowNotification] = useState(false);
+  // const [showNotification, setShowNotification] = useState(false);
 
-  const [navName, setNavName] = useState(null);
+  const [navName, setNavName] = useState();
 
   useEffect(() => {
     // setNavName(localStorage.getItem("name"))
@@ -22,12 +22,12 @@ function Navbar() {
     // window.addEventListener('storage', storageEventHandler, false);
   }, []);
 
-//   function storageEventHandler() {
-//     console.log("hi from storageEventHandler")
-//     // setLoggedInName(localStorage.getItem('name') || null)
-//     setNavName((localStorage.getItem("name")) || null);
+  //   function storageEventHandler() {
+  //     console.log("hi from storageEventHandler")
+  //     // setLoggedInName(localStorage.getItem('name') || null)
+  //     setNavName((localStorage.getItem("name")) || null);
 
-// }
+  // }
 
   const logoutUser = () => {
     dispatch({

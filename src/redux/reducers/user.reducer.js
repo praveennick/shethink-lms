@@ -26,6 +26,7 @@ export const userReducer = (
   currentState = { loading: true, userInfo: null },
   action
 ) => {
+  console.log("action", action);
   switch (action.type) {
     case USER_SIGNIN_REQUEST:
       return { loading: true };
@@ -92,7 +93,7 @@ export const singleCandidateReducer = (
   currentState = { loading: true, candidateInfo: null },
   action
 ) => {
-  console.log("action",action)
+  // console.log("action", action);
   switch (action.type) {
     case GET_SINGLE_CANDIDATE_REQUEST:
       return { loading: true };
@@ -153,4 +154,3 @@ export const courseListReducer = (
       return currentState;
   }
 };
-
