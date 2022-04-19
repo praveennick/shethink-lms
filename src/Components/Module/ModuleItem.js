@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import "../assets/css/ModuleItem.css";
+import "./ModuleItem.css";
 
-import { ReactComponent as ThreeDots } from "../assets/icons/three-dots-vertical.svg";
+import { ReactComponent as ThreeDots } from "../../assets/icons/three-dots-vertical.svg";
 import { Link } from "react-router-dom";
 
 function ModuleItem({ banner }) {

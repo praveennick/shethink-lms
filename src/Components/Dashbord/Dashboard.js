@@ -1,13 +1,10 @@
 import React from "react";
-import Calandar from "./Calendar";
-import './Dashboard.css'
-// import "../assets/css/Dashboard.css";
-
-import { ReactComponent as LabelDesign } from "../assets/images/dash-label-design.svg";
-// import { ReactComponent as HeaderDesign } from "../assets/images/dash-header-design.svg";
-import HeaderDesign from "../assets/images/dash-header-design.png";
-import ProgressChart from "./ProgressChart";
-import RecentActivity from "./RecentActivity";
+import Calandar from "../Calender/Calendar";
+import "./Dashboard.css";
+import { ReactComponent as LabelDesign } from "../../assets/images/dash-label-design.svg";
+import HeaderDesign from "../../assets/images/dash-header-design.png";
+import ProgressChart from "../ProgressChart/ProgressChart";
+import RecentActivity from "../RecentActivity/RecentActivity";
 
 function Dashboard() {
   return (

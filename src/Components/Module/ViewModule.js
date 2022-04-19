@@ -1,9 +1,9 @@
 import React from "react";
-import "../assets/css/ViewModule.css";
+import "./ViewModule.css";
 
 import ViewModuleItem from "./ViewModuleItem";
 
-import { ReactComponent as LeftArrow } from "../assets/icons/left-arrow.svg";
+import { ReactComponent as LeftArrow } from "../../assets/icons/left-arrow.svg";
 
 import ModuleHeader from "./ModuleHeader";
 import { Link } from "react-router-dom";

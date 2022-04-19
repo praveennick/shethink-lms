@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import "../assets/css/InternHomeCandidate.css";
+import "./InternHomeCandidate.css";
 
-import { ReactComponent as DownArrow } from "../assets/icons/down-arrow.svg";
-import { ReactComponent as DeleteIcon } from "../assets/icons/delete-icon.svg";
+import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg";
 import { Link } from "react-router-dom";
 
 function InternHomeCandidate({ courses }) {

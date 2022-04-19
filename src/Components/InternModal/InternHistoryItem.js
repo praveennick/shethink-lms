@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-
-import "../assets/css/InternHistoryItem.css";
-
-import { ReactComponent as ThreeDots } from "../assets/icons/three-dots-vertical.svg";
-import { ReactComponent as CalandarIcon } from "../assets/icons/calendar-icon.svg";
+import "./InternHistoryItem.css";
+import { ReactComponent as ThreeDots } from "../../assets/icons/three-dots-vertical.svg";
+import { ReactComponent as CalandarIcon } from "../../assets/icons/calendar-icon.svg";
 import { Link } from "react-router-dom";
 
 function InternHistoryItem() {

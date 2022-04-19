@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "../assets/css/ModuleHeader.css";
+import "./ModuleHeader.css";
 
-import { ReactComponent as ModuleDesign } from "../assets/images/module-design.svg";
-import { ReactComponent as ModuleDocSign } from "../assets/images/module-doc-sign.svg";
+import { ReactComponent as ModuleDesign } from "../../assets/images/module-design.svg";
+import { ReactComponent as ModuleDocSign } from "../../assets/images/module-doc-sign.svg";
 
 function ModuleHeader() {
   return (

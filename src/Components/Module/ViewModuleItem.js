@@ -1,12 +1,12 @@
 import React from "react";
-import "../assets/css/ViewModuleItem.css";
+import "./ViewModuleItem.css";
 
-import { ReactComponent as LinkedinLogo } from "../assets/icons/linkedin-square.svg";
-import { ReactComponent as HeartLogo } from "../assets/icons/heart.svg";
-import { ReactComponent as CommentLogo } from "../assets/icons/comment-icon.svg";
-import { ReactComponent as PriceTag } from "../assets/icons/price-tag.svg";
+import { ReactComponent as LinkedinLogo } from "../../assets/icons/linkedin-square.svg";
+import { ReactComponent as HeartLogo } from "../../assets/icons/heart.svg";
+import { ReactComponent as CommentLogo } from "../../assets/icons/comment-icon.svg";
+import { ReactComponent as PriceTag } from "../../assets/icons/price-tag.svg";
 
-import viewCourseMedia1 from "../assets/images/viewCourse-banner-1.png";
+import viewCourseMedia1 from "../../assets/images/viewCourse-banner-1.png";
 
 function ViewModuleItem({ hide }) {
   return (

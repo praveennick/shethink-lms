@@ -1,14 +1,22 @@
-import React, { useState } from "react";
-import InternHomeCandidate from "./InternHomeCandidate";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import './HrHome.css'
+import HrHomeCandidate from "./HrHomeCandidate";
 import InputField from "../InputField/InputField";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
 import { ReactComponent as ModalDesign } from "../../assets/icons/modal-bg-design.svg";
 import ChipTechnology from "../Technology/ChipTechnology";
+import { candidatesList } from "../../redux/actions/user.actions";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-function InternHome() {
+
+function HrHome() {
+  
+  const history = useHistory()
+  const userSignin = useSelector((state) => state.userSignin);
   const [subMenu, setSubMenu] = useState(false);
   {
     /* add new technology */
@@ -23,6 +31,11 @@ function InternHome() {
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
 
+  //Candidate Array
+  const dispatch = useDispatch();
+  const candidateItems = useSelector((state) => state.candidatesList);
+  console.log(candidateItems);
+
   const style = {
     position: "absolute",
     top: "50%",
@@ -36,6 +49,18 @@ function InternHome() {
     overFlow: "hidden",
     p: 0,
   };
+
+  useEffect(() => {
+    console.log("candidateItems", candidateItems);
+    dispatch(candidatesList(userSignin.userInfo));
+  }, []);
+
+
+
+const handleSingleCandidate=(id)=>{
+  // console.log("candidate id",id)
+  history.push(`/candidateProfile/id=${id}`)
+}
 
   return (
     <div className="hrHome">
@@ -146,24 +171,22 @@ function InternHome() {
               )}
             </th>
             <th>Skill</th>
-            <th>Task</th>
             <th>Created Course</th>
             <th>Status</th>
             <th>Delete</th>
           </tr>
-          <InternHomeCandidate courses={"1"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
-          <InternHomeCandidate courses={"Nil"} />
+          {candidateItems.candidatesInfo &&
+            candidateItems.candidatesInfo.map((item, index) => {
+              return (
+                < >
+                  <HrHomeCandidate data={item} onClick={()=>handleSingleCandidate(item.id)} />
+                </>
+              );
+            })}
         </tbody>
       </table>
     </div>
   );
 }
 
-export default InternHome;
+export default HrHome;

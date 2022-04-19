@@ -1,18 +1,18 @@
-import React from "react";
-import "../assets/css/InternModel.css";
-import InputField from "./InputField";
-import { ReactComponent as EditIcon } from "../assets/icons/edit-icon.svg";
-import { ReactComponent as AddMoreIcon } from "../assets/icons/add-more-icon.svg";
+import React, { useState } from "react";
+import "./InternModel.css";
+import InputField from "../InputField/InputField";
+import { ReactComponent as EditIcon } from "../../assets/icons/edit-icon.svg";
+import { ReactComponent as AddMoreIcon } from "../../assets/icons/add-more-icon.svg";
 import InternModelWeek from "./InternModelWeek";
 import { Link } from "react-router-dom";
 
 function InternModel() {
+  const [weekComponent, setWeekComponent] = useState([
+    <InternModelWeek week={1} />,
+  ]);
   const handleAddMore = () => {
-    return (
-      <>
-        <InternModelWeek />
-      </>
-    );
+    let weeksCount = weekComponent.length + 1;
+    setWeekComponent([...weekComponent, <InternModelWeek week={weeksCount} />]);
   };
 
   return (
@@ -45,7 +45,8 @@ function InternModel() {
           <EditIcon className="internModel-edit-icon" />
         </div>
         <div className="internModel-task-week-form">
-          <InternModelWeek />
+          {/* <InternModelWeek /> */}
+          {weekComponent}
           <button className="internModel-addMore" onClick={handleAddMore}>
             Add more <AddMoreIcon />
           </button>

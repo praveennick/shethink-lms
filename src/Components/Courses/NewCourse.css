@@ -1,0 +1,87 @@
+.newCourse-back-btn {
+  display: flex;
+  align-items: center;
+}
+.newCourse-leftArrow-btn {
+  background: #6750a4;
+  border-radius: 2.34483px;
+  padding: 5px 12px;
+  margin-right: 10px;
+  border: none;
+}
+.newCourse-permission {
+  margin-top: 20px;
+  border: 1px dashed #6750a4;
+  background: rgba(103, 80, 164, 0.1);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 20vh;
+  border-radius: 22px;
+  justify-content: space-around;
+}
+.newCourse-permission-btns {
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+}
+.newCourse-permission-btn-1 {
+  text-decoration: none;
+  background: #1c1b1f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.newCourse-permission-btn-2 {
+  border: 1px solid #1c1b1f;
+  background: #ffffff;
+  color: #1c1b1f;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 20px;
+}
+.newCourse-header {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+}
+.newCourse-header h3 {
+  color: #6750a4;
+}
+.newCourse-header p {
+  font-size: 14px;
+}
+.newCourse-previous-courses {
+  background: linear-gradient(
+    90deg,
+    #6750a4 1.62%,
+    rgba(103, 80, 164, 0) 88.65%
+  );
+  border-radius: 5px;
+  color: #ffffff;
+  padding: 20px;
+}
+.newCourse-access {
+  background: #ffffff;
+  border: 1px solid #e1e1e1;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.newCourse-access h3 {
+  color: #6750a4;
+}
+.newCourse-access p {
+  font-size: 14px;
+}
