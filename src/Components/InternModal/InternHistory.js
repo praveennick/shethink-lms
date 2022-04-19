@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import InputField from "./InputField";
+import InputField from "../InputField/InputField";
 
-import "../assets/css/InternHistory.css";
-import { ReactComponent as SearchIcon } from "../assets/icons/search-icon.svg";
+import "./InternHistory.css";
+import { ReactComponent as SearchIcon } from "../../assets/icons/search-icon.svg";
 import InternHistoryItem from "./InternHistoryItem";
 
 function InternHistory() {

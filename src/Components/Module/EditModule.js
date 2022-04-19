@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import "../assets/css/EditModule.css";
-import InputField from "./InputField";
+import "./EditModule.css";
+import InputField from "../InputField/InputField";
 
-import { ReactComponent as DeleteIcon } from "../assets/icons/delete-icon.svg";
+import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg";
 
 function EditModule() {
   return (

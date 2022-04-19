@@ -1,17 +1,17 @@
 import React from "react";
-import "../assets/css/Modules.css";
+import "./Modules.css";
 
 import ModuleItem from "./ModuleItem";
 import ModuleHeader from "./ModuleHeader";
 
-import ModuleBanner1 from "../assets/images/module-banner-1.png";
-import ModuleBanner2 from "../assets/images/module-banner-2.png";
-import ModuleBanner3 from "../assets/images/module-banner-3.png";
-import ModuleBanner4 from "../assets/images/module-banner-4.png";
-import ModuleBanner5 from "../assets/images/module-banner-5.png";
-import ModuleBanner6 from "../assets/images/module-banner-6.png";
-import ModuleBanner7 from "../assets/images/module-banner-7.png";
-import ModuleBanner8 from "../assets/images/module-banner-8.png";
+import ModuleBanner1 from "../../assets/images/module-banner-1.png";
+import ModuleBanner2 from "../../assets/images/module-banner-2.png";
+import ModuleBanner3 from "../../assets/images/module-banner-3.png";
+import ModuleBanner4 from "../../assets/images/module-banner-4.png";
+import ModuleBanner5 from "../../assets/images/module-banner-5.png";
+import ModuleBanner6 from "../../assets/images/module-banner-6.png";
+import ModuleBanner7 from "../../assets/images/module-banner-7.png";
+import ModuleBanner8 from "../../assets/images/module-banner-8.png";
 
 function Modules() {
   return (

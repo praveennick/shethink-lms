@@ -1,6 +1,5 @@
 import React from "react";
-// import "../assets/css/DashboardListItem.css";
-import './DashboardListItem.css'
+import "./DashboardListItem.css";
 
 function DashboardListItem({ icon, name }) {
   return (
