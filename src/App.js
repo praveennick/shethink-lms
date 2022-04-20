@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Courses from "./Components/Courses/Courses";
 import MyProfile from "./Components/Profile/MyProfile";
 import ViewCourse from "./Components/Courses/ViewCourse";
-import HrHome from './Components/HrHome/HrHome'
+import HrHome from "./Components/HrHome/HrHome";
 import Modules from "./Components/Module/Modules";
 import InternModel from "./Components/InternModal/InternModel";
 import ScrollToTop from "./Components/ScrollToTop";
@@ -17,7 +17,8 @@ import EditModule from "./Components/Module/EditModule";
 import InternHistory from "./Components/InternModal/InternHistory";
 import CandidateProfile from "./Components/Profile/CandidateProfile";
 import InternHome from "./Components/InternModal/InternHome";
-import NewCourse from "./Components/Courses/NewCourse"
+import NewCourse from "./Components/Courses/NewCourse";
+import AssignTask from "./Components/AssignTask/AssignTask";
 
 function App() {
   return (
@@ -48,6 +49,7 @@ function App() {
                 component={CandidateProfile}
               />
               <Route exact path="/internHome" component={InternHome} />
+              <Route exact path="/assignTask" component={AssignTask} />
             </div>
           </div>
         </Switch>
