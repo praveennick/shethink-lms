@@ -1,17 +1,11 @@
 import React, { useState } from "react";
 import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
-import './HrHomeCandidate.css'
+import "./HrHomeCandidate.css";
 import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
-<<<<<<< HEAD:src/Components/HrHomeCandidate.js
 import axios from "axios";
-import { deleteCandidate } from "../redux/actions/user.actions";
-import { GET_CANDIDATE_SUCCESS } from "../constants";
-=======
-import axios from 'axios';  
 import { deleteCandidate } from "../../redux/actions/user.actions";
 import { GET_CANDIDATE_SUCCESS } from "../../constants";
->>>>>>> e6b53cafb9a0a6cd7880d29fcfa34d318e1a783b:src/Components/HrHome/HrHomeCandidate.js
 
 function HrHomeCandidate({ data, onClick }) {
   const dispatch = useDispatch();

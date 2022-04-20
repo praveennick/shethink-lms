@@ -5,13 +5,8 @@ import { ReactComponent as Setting } from "../../assets/icons/setting.svg";
 import Notification from "../Notification/Notification";
 
 import { Link, useHistory } from "react-router-dom";
-<<<<<<< HEAD:src/Components/Navbar.js
 import { useDispatch } from "react-redux";
-import { USER_SIGNIN_SUCCESS } from "../constants";
-=======
-import { useDispatch} from "react-redux";
 import { USER_SIGNIN_SUCCESS } from "../../constants";
->>>>>>> e6b53cafb9a0a6cd7880d29fcfa34d318e1a783b:src/Components/Navbar/Navbar.js
 
 function Navbar() {
   const history = useHistory();

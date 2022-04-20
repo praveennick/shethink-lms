@@ -10,8 +10,8 @@ function SidebarListItem({ icon, name, to }) {
       to={`${to}`}
       onClick={() => localStorage.setItem("name", name)}
     >
-      {/* {icon} */}
-      <div>{icon}</div>
+      {icon}
+      {/* <div>{icon}</div> */}
       <h4 style={{ paddingLeft: "5px" }}>{name}</h4>
     </Link>
   );
