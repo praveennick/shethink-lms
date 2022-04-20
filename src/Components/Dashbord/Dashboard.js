@@ -7,6 +7,7 @@ import ProgressChart from "../ProgressChart/ProgressChart";
 import RecentActivity from "../RecentActivity/RecentActivity";
 
 function Dashboard() {
+  const progress = null;
   return (
     <div className="dashboard">
       <div className="dashboard-header">
@@ -32,8 +33,9 @@ function Dashboard() {
       <div className="dashboad-content">
         <div className="dashboard-left">
           <Calandar />
-          <ProgressChart />
+          {progress ? <ProgressChart /> : <h2 className="no_data">No Data Found</h2>}
         </div>
+        
         <RecentActivity />
       </div>
     </div>

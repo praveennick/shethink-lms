@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import './HrHome.css'
+import "./HrHome.css";
 import HrHomeCandidate from "./HrHomeCandidate";
 import InputField from "../InputField/InputField";
 import Box from "@mui/material/Box";
@@ -12,10 +12,8 @@ import { candidatesList } from "../../redux/actions/user.actions";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-
 function HrHome() {
-  
-  const history = useHistory()
+  const history = useHistory();
   const userSignin = useSelector((state) => state.userSignin);
   const [subMenu, setSubMenu] = useState(false);
   {
@@ -55,12 +53,10 @@ function HrHome() {
     dispatch(candidatesList(userSignin.userInfo));
   }, []);
 
-
-
-const handleSingleCandidate=(id)=>{
-  // console.log("candidate id",id)
-  history.push(`/candidateProfile/id=${id}`)
-}
+  const handleSingleCandidate = (id) => {
+    // console.log("candidate id",id)
+    history.push(`/candidateProfile/id=${id}`);
+  };
 
   return (
     <div className="hrHome">
@@ -178,8 +174,13 @@ const handleSingleCandidate=(id)=>{
           {candidateItems.candidatesInfo &&
             candidateItems.candidatesInfo.map((item, index) => {
               return (
-                < >
-                  <HrHomeCandidate data={item} onClick={()=>handleSingleCandidate(item.id)} />
+                <>
+                  {item.designation === "FT-Tester" ? (
+                    <HrHomeCandidate
+                      data={item}
+                      onClick={() => handleSingleCandidate(item.id)}
+                    />
+                  ) : null}
                 </>
               );
             })}

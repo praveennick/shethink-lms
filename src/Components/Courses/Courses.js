@@ -36,8 +36,8 @@ function Courses() {
         <CourseBook className="course-book" />
       </div>
       <div className="course-category">
-        <a href="www.google.com">For Beginners</a>
-        <a href="www.google.com">Advance Learning</a>
+        <div className="course-category" >For Beginners</div>
+        <div className="course-category" >Advance Learning</div>
       </div>
       <div className="select-courses">
         <label htmlFor="courses" className="select-courses-label">

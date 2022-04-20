@@ -9,7 +9,7 @@
   color: black;
 }
 
-.sidebar-list-item:hover {
+.sidebar-list-item:hover, .sidebar-list-item:focus  {
   background: #6750a4;
   color: white;
   fill: white;

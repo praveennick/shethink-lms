@@ -23,9 +23,9 @@ function Login(props) {
   };
 
   useEffect(() => {
-    if (userSignin && userSignin.userInfo) {
-      props.history.push("/dashboard");
-    }
+    if (userSignin && userSignin.userInfo && userSignin.userInfo.role==="FT-HR") {
+      props.history.push("/home");
+    } 
     console.log("userSignin.userInfo", userSignin);
   }, [userSignin, props.history]);
 

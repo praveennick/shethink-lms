@@ -29,18 +29,16 @@
   text-align: center;
 }
 
-.internModel-btn-1:hover {
-  background: #1c1b1f;
-  color: white;
-  border-bottom: 3px solid white;
-  width: 10px;
-}
+.internModel-btn-1:hover,
+.internModel-btn-1:focus,
+.internModel-btn-2:focus,
 .internModel-btn-2:hover {
   background: #1c1b1f;
   color: white;
   border-bottom: 3px solid white;
   width: 10px;
 }
+
 .internModel-export-btn {
   color: #6750a4;
   text-decoration: none;

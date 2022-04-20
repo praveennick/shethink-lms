@@ -41,8 +41,6 @@
 .course-category {
   margin-top: 15px;
   display: flex;
-}
-.course-category a {
   color: #b5c2c7;
   font-size: 20px;
   font-weight: bold;
@@ -50,8 +48,9 @@
   text-decoration: none;
 }
 
-.course-category a:hover {
+.course-category:hover, .course-category:focus{
   color: #6750a4;
+  cursor: pointer;
 }
 .select-courses {
   display: flex;
