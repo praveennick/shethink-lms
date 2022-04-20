@@ -7,6 +7,7 @@ import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as HomeIcon } from "../../assets/icons/home-icon.svg";
 import { ReactComponent as InternModelIcon } from "../../assets/icons/intern-model-icon.svg";
 import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.svg";
+import { ReactComponent as TaskIcon } from "../../assets/icons/assigned-task-icon.svg";
 import { ReactComponent as CoursesIcon } from "../../assets/icons/courses.svg";
 import { ReactComponent as ModuleIcon } from "../../assets/icons/module.svg";
 
@@ -41,6 +42,11 @@ function Sidebar() {
           name="Dashboard"
           icon={<DashboardIcon />}
           to={"/dashboard"}
+        />
+        <SidebarListItem
+          name="Task Assigned"
+          icon={<TaskIcon />}
+          to={"/assignTask"}
         />
         <SidebarListItem
           name="Courses"
