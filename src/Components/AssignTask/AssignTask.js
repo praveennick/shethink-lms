@@ -2,15 +2,19 @@ import React from "react";
 import "./AssignTask.css";
 
 import { ReactComponent as Design1 } from "../../assets/images/assignTask-design.svg";
-import { ReactComponent as TaskComplete } from "../../assets/icons/tast-complete.svg";
 
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AssignTaskWeek from "./AssignTaskWeek";
 
 function AssignTask() {
+  const style = {
+    border: "1px solid #E1E1E1",
+    boxShadow: 0,
+  };
   return (
     <div className="assignTask">
       <div className="assignTask-header">
@@ -26,210 +30,8 @@ function AssignTask() {
       </div>
       <button className="assignTask-markTask-btn">March Task List</button>
       <div className="assignTask-content">
-        <Accordion className="assignTask-week">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Week 1</Typography>
-          </AccordionSummary>
-          <AccordionDetails className="assignTask-week-item assignTask-complete">
-            <div className="assignTask-week-item-header">
-              <h3>Day 1 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-running">
-            <div className="assignTask-week-item-header">
-              <h3>Day 2 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-locked">
-            <div className="assignTask-week-item-header">
-              <h3>Day 3 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion className="assignTask-week">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Week 2</Typography>
-          </AccordionSummary>
-          <AccordionDetails className="assignTask-week-item assignTask-complete">
-            <div className="assignTask-week-item-header">
-              <h3>Day 1 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-running">
-            <div className="assignTask-week-item-header">
-              <h3>Day 2 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-locked">
-            <div className="assignTask-week-item-header">
-              <h3>Day 3 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion className="assignTask-week">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Week 3</Typography>
-          </AccordionSummary>
-          <AccordionDetails className="assignTask-week-item assignTask-complete">
-            <div className="assignTask-week-item-header">
-              <h3>Day 1 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-running">
-            <div className="assignTask-week-item-header">
-              <h3>Day 2 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-locked">
-            <div className="assignTask-week-item-header">
-              <h3>Day 3 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-        </Accordion>
-        <Accordion className="assignTask-week">
-          <AccordionSummary
-            expandIcon={<ExpandMoreIcon />}
-            aria-controls="panel1a-content"
-            id="panel1a-header"
-          >
-            <Typography>Week 4</Typography>
-          </AccordionSummary>
-          <AccordionDetails className="assignTask-week-item assignTask-complete">
-            <div className="assignTask-week-item-header">
-              <h3>Day 1 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-running">
-            <div className="assignTask-week-item-header">
-              <h3>Day 2 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-          <AccordionDetails className="assignTask-week-item assignTask-locked">
-            <div className="assignTask-week-item-header">
-              <h3>Day 3 Task</h3>
-              {/* <input type="checkbox" name="" id="" /> */}
-              <TaskComplete />
-            </div>
-            <div className="assignTask-week-item-content">
-              <p>
-                Create a typography for news paper app. Also mentioned details
-                about font and why you choose it.
-              </p>
-              <a href="">Refrence Link- www.youtube.com</a>
-            </div>
-          </AccordionDetails>
-        </Accordion>
+        <AssignTaskWeek weekNum={1} />
+        <AssignTaskWeek weekNum={2} />
       </div>
     </div>
   );
