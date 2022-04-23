@@ -175,12 +175,13 @@ function HrHome() {
             candidateItems.candidatesInfo.map((item, index) => {
               return (
                 <>
-                  {item.designation === "FT-Tester" ? (
+                  
+                  {/* {item.designation === "Intern" ? ( */}
                     <HrHomeCandidate
                       data={item}
                       onClick={() => handleSingleCandidate(item.id)}
                     />
-                  ) : null}
+                  {/* ) : null} */}
                 </>
               );
             })}

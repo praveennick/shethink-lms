@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 // import logo from "../assets/images/logo.svg";
 import gamer from "../../assets/images/gamer.png";
@@ -10,15 +10,86 @@ import { ReactComponent as DashboardIcon } from "../../assets/icons/dashboard.sv
 import { ReactComponent as TaskIcon } from "../../assets/icons/assigned-task-icon.svg";
 import { ReactComponent as CoursesIcon } from "../../assets/icons/courses.svg";
 import { ReactComponent as ModuleIcon } from "../../assets/icons/module.svg";
-
 import SidebarListItem from "./SidebarListItem";
 import { Link } from "react-router-dom";
+import SidebarMap from "./SidebarMap";
+import { useDispatch, useSelector } from "react-redux";
+import { userSigninAction } from "../../redux/actions/user.actions";
 
 function Sidebar() {
+  const userSignin = useSelector((state) => state.userSignin);
+  const user_info = userSignin.userInfo
+  const dispatch = useDispatch();
+  // let sidebar=[]
+  const [aaa, setAaa] = useState([])
+  const Funn = ()=>{
+    if(user_info.role.toString() === "FT-HR"){
+    let  sidebar = [
+        { name: "Home", icon: <HomeIcon />, to: "/home" },
+        { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
+        { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+        { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+        { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
+      ];
+      setAaa(sidebar)
+    }
+    if(user_info.role.toString() === 'Intern'){
+     let sidebar = [
+        { name: "Home", icon: <HomeIcon />, to: "/home" },
+        { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
+        { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+        { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+        { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
+      ];
+      setAaa(sidebar)
+    }
+   
+  }
+  useEffect(() => {
+    console.log('User Info', typeof user_info.role)
+    setTimeout(() => {
+      Funn()
+    }, 3000);
+  },[]);
+
+  // React.useEffect(()=>{
+  //   TempFetch()
+  // },[])
+  // const TempFetch = async ()=>{
+  //   await fetch('http://15.207.21.72:3211/shethink/v1/candidates?designation=intern',{
+  //     headers: {
+  //       'Accept': 'application/json',
+  //       'Authrization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2MjU0MjMzNmJiZTc2NTc3MDExODEzNmIiLCJyb2xlIjoiRlQtSFIiLCJ1c2VyTmFtZSI6IlByYWdhdGkiLCJpYXQiOjE2NDk2ODE0NTksImV4cCI6MTY1ODMyMTQ1OX0.9eYw6Ph5ZSU0vGFxR-e_mDzpnO4WO7rDVhtMrwgiD-E'
+  //     }
+  //   }).then((res)=>res.json())
+  //   .then((json)=>{
+  //     console.log('In Json',json)
+  //   })
+  //   .catch((err)=>{
+  //     console.log('In Catch',err)
+  //   })
+  // }
+  const HrSidebar = [
+    { name: "Home", icon: <HomeIcon />, to: "/home" },
+    { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
+    { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+    { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+    { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
+  ];
+  const InternSidebar = [
+    { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+    { name: "Assign Task", icon: <TaskIcon />, to: "/interntask" },
+    { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+    { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
+  ];
+  const CandidateSidebar = [
+    { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+    { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+    { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
+  ];
   return (
     <div className="sidebar">
       <Link to="/home">
-        {/* <img src={logo} alt="" className="sidebar-logo" /> */}
         <Logo className="sidebar-logo" />
       </Link>
 
@@ -30,30 +101,31 @@ function Sidebar() {
         </div>
       </Link>
       <div className="sidebar-categories">
-        <h3 className="sidebar-categories-title">Candidate Details</h3>
-        <SidebarListItem name="Home" icon={<HomeIcon />} to={"/home"} />
-        <SidebarListItem
-          name="Intern Model"
-          icon={<InternModelIcon />}
-          to={"/internModel"}
-        />
-        <h3 className="sidebar-categories-title">Your Dashboard</h3>
-        <SidebarListItem
-          name="Dashboard"
-          icon={<DashboardIcon />}
-          to={"/dashboard"}
-        />
-        <SidebarListItem
-          name="Task Assigned"
-          icon={<TaskIcon />}
-          to={"/assignTask"}
-        />
-        <SidebarListItem
-          name="Courses"
-          icon={<CoursesIcon />}
-          to={"/courses"}
-        />
-        <SidebarListItem name="Modules" icon={<ModuleIcon />} to={"/modules"} />
+        <SidebarMap sidebarArray={aaa} />
+        {/* {
+          role == 'Intern' ?
+          <Sidebarmap  sidebarArray={InternSidebar}/>
+          : 
+          role == 'Ft-Hr' ?
+
+           <Sidebar sidebarArray={HrSidebar}/> 
+          : nlll 
+        } */}
+        {/* {HrSidebar?.map((value, index) => {
+          return (
+            <>
+              {index===0?(<h3 className="sidebar-categories-title">Candidate Details</h3>):null}
+              {index === 2 ? (
+                <h3 className="sidebar-categories-title">Your Dashboard</h3>
+              ) : null}
+              <SidebarListItem
+                name={value.name}
+                icon={value.icon}
+                to={value.to}
+              />
+            </>
+          );
+        })} */}
       </div>
     </div>
   );

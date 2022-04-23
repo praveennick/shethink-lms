@@ -71,6 +71,7 @@ export const candidatesList = (userInfo) => async (dispatch) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     });
+    console.log('data in actions',data)
     dispatch({
       type: GET_CANDIDATE_SUCCESS,
       payload: data.data,
