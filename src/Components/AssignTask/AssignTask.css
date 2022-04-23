@@ -42,7 +42,7 @@
 }
 .assignTask-week-item {
   width: 98%;
-  margin: 20px auto;
+  margin: 0 auto 20px auto;
   border-radius: 5px;
   height: 25vh;
   display: flex;
