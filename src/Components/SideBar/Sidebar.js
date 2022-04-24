@@ -18,39 +18,38 @@ import { userSigninAction } from "../../redux/actions/user.actions";
 
 function Sidebar() {
   const userSignin = useSelector((state) => state.userSignin);
-  const user_info = userSignin.userInfo
+  const user_info = userSignin.userInfo;
   const dispatch = useDispatch();
   // let sidebar=[]
-  const [aaa, setAaa] = useState([])
-  const Funn = ()=>{
-    if(user_info.role.toString() === "FT-HR"){
-    let  sidebar = [
+  const [aaa, setAaa] = useState([]);
+  const Funn = () => {
+    if (user_info.role.toString() === "FT-HR") {
+      let sidebar = [
         { name: "Home", icon: <HomeIcon />, to: "/home" },
         { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
         { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
         { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
         { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
       ];
-      setAaa(sidebar)
+      setAaa(sidebar);
     }
-    if(user_info.role.toString() === 'Intern'){
-     let sidebar = [
+    if (user_info.role.toString() === "Intern") {
+      let sidebar = [
         { name: "Home", icon: <HomeIcon />, to: "/home" },
         { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
         { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
         { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
         { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
       ];
-      setAaa(sidebar)
+      setAaa(sidebar);
     }
-   
-  }
+  };
   useEffect(() => {
-    console.log('User Info', typeof user_info.role)
+    console.log("User Info", typeof user_info.role);
     setTimeout(() => {
-      Funn()
+      Funn();
     }, 3000);
-  },[]);
+  }, []);
 
   // React.useEffect(()=>{
   //   TempFetch()
@@ -69,6 +68,7 @@ function Sidebar() {
   //     console.log('In Catch',err)
   //   })
   // }
+
   const HrSidebar = [
     { name: "Home", icon: <HomeIcon />, to: "/home" },
     { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
