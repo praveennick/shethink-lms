@@ -49,7 +49,7 @@ function App() {
                 component={CandidateProfile}
               />
               <Route exact path="/internHome" component={InternHome} />
-              <Route exact path="/assignTask" component={AssignTask} />
+              <Route exact path="/assigntask" component={AssignTask} />
             </div>
           </div>
         </Switch>
