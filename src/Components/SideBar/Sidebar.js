@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Sidebar.css";
 // import logo from "../assets/images/logo.svg";
 import gamer from "../../assets/images/gamer.png";
-
+import {ROLES} from "../../constant/roles"
 import { ReactComponent as Logo } from "../../assets/images/logo.svg";
 import { ReactComponent as HomeIcon } from "../../assets/icons/home-icon.svg";
 import { ReactComponent as InternModelIcon } from "../../assets/icons/intern-model-icon.svg";
@@ -18,37 +18,43 @@ import { userSigninAction } from "../../redux/actions/user.actions";
 
 function Sidebar() {
   const userSignin = useSelector((state) => state.userSignin);
-  const user_info = userSignin.userInfo;
+  const user_info = userSignin?.userInfo;
   const dispatch = useDispatch();
   // let sidebar=[]
-  const [aaa, setAaa] = useState([]);
+  const [sidebar, setSidebar] = useState([]);
   const Funn = () => {
-    if (user_info.role.toString() === "FT-HR") {
-      let sidebar = [
+    if (user_info && user_info?.desgination?.toString() === ROLES.HR) {
+      let sideBarElement = [
         { name: "Home", icon: <HomeIcon />, to: "/home" },
         { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
         { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
         { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
         { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
       ];
-      setAaa(sidebar);
+      setSidebar(sideBarElement);
     }
-    if (user_info.role.toString() === "Intern") {
-      let sidebar = [
-        { name: "Home", icon: <HomeIcon />, to: "/home" },
-        { name: "Intern Model", icon: <TaskIcon />, to: "/internmodel" },
+   else  if (user_info && user_info?.desgination?.toString() === ROLES.INTERN) {
+      let sideBarElement = [
+        { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
+        { name: "Assign Task", icon: <TaskIcon />, to: "/assigntask"},
+        { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
+      ];
+      setSidebar(sideBarElement);
+    }
+    else if (user_info && user_info?.desgination?.toString() === ROLES.FULL_TIME) {
+      let sideBarElement = [
         { name: "Dashboard", icon: <DashboardIcon />, to: "/dashboard" },
         { name: "Courses", icon: <CoursesIcon />, to: "/courses" },
         { name: "Modules", icon: <ModuleIcon />, to: "/modules" },
       ];
-      setAaa(sidebar);
+      setSidebar(sideBarElement);
     }
   };
   useEffect(() => {
-    console.log("User Info", typeof user_info.role);
+    // console.log("User Info", typeof user_info.desgination);
     setTimeout(() => {
       Funn();
-    }, 3000);
+    }, 2000);
   }, []);
 
   // React.useEffect(()=>{
@@ -101,7 +107,7 @@ function Sidebar() {
         </div>
       </Link>
       <div className="sidebar-categories">
-        <SidebarMap sidebarArray={aaa} />
+        <SidebarMap sidebarArray={sidebar} />
         {/* {
           role == 'Intern' ?
           <Sidebarmap  sidebarArray={InternSidebar}/>

@@ -23,10 +23,16 @@ function Login(props) {
   };
 
   useEffect(() => {
-    if (userSignin && userSignin.userInfo && userSignin.userInfo.role==="FT-HR") {
+    // console.log( userSignin.userInfo?.desgination==="FT-HR")
+    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="FT-HR") {
       props.history.push("/home"); 
+  
     }else
-    if(userSignin && userSignin.userInfo && userSignin.userInfo.role==="Intern"){
+    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="Intern") {
+      props.history.push("/dashbord"); 
+  
+    }else
+    if(userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="FT-Developer"){
       props.history.push("/dashboard"); 
     }
     console.log("userSignin.userInfo", userSignin);

@@ -3,26 +3,31 @@ import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
 import "./HrHomeCandidate.css";
 import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg";
 import { useDispatch, useSelector } from "react-redux";
-import axios from "axios";
-import { deleteCandidate } from "../../redux/actions/user.actions";
-import { GET_CANDIDATE_SUCCESS } from "../../constants";
+import { useHistory } from "react-router-dom";
+import axiosInstance from "../../api";
+import { candidatesList, candidatesListIntern } from "../../redux/actions/user.actions";
 
 function HrHomeCandidate({ data, onClick }) {
+  const history = useHistory();
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
-  const candidatesList = useSelector((state) => state.candidatesList);
+
 
   const [subMenu, setSubMenu] = useState(false);
 
-  const handleDelete = (e, id) => {
-    e.preventDefault();
-    console.log(id, "id");
+  const handleDelete = async (id,designation) => {
 
-    // dispatch(deleteCandidate(userSignin.userInfo, id));
-    // const filteredCandidateList = candidatesList.filter(
-    //   (item) => item.id !== id
-    // );
-    // dispatch(candidatesList(userSignin.filteredCandidateList));
+    axiosInstance
+      .delete(`/candidate?id=${id}`, {
+        headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
+      })
+      .then((res) => {
+        if(designation==="FT-Developer")dispatch(candidatesList(userSignin.userInfo));
+        if(designation==="Intern")dispatch(candidatesListIntern(userSignin.userInfo));
+      });
+  };
+  const handleSingleCandidate = (id) => {
+    history.push(`/candidateProfile/id=${id}`);
   };
   return (
     <tr
@@ -30,7 +35,7 @@ function HrHomeCandidate({ data, onClick }) {
       style={{ cursor: "pointer" }}
       onClick={onClick}
     >
-      <td>{data.username}</td>
+      <td onClick={() => handleSingleCandidate(data.id)}>{data.username} </td>
       <td>{data.designation}</td>
       <td>{data.technology.join(", ")}</td>
       <td>{data.createdCourse}</td>
@@ -56,11 +61,8 @@ function HrHomeCandidate({ data, onClick }) {
           </div>
         )}
       </td>
-      <td>
-        <DeleteIcon
-          className="hrHomeCandidate-deleteIcon"
-          onClick={(e) => handleDelete(data.id, e)}
-        />
+      <td onClick={() => handleDelete(data.id,data.designation)}>
+        <DeleteIcon className="hrHomeCandidate-deleteIcon" />
       </td>
     </tr>
   );

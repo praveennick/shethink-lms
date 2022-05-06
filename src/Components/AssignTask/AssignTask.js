@@ -2,7 +2,7 @@ import React from "react";
 import "./AssignTask.css";
 
 import { ReactComponent as Design1 } from "../../assets/images/assignTask-design.svg";
-import { ReactComponent as TaskComplete } from "../../assets/icons/tast-complete.svg";
+import { ReactComponent as TaskComplete } from "../../assets/icons/task-complete.svg";
 import { ReactComponent as Incomplete } from "../../assets/icons/incomplete.svg";
 import { ReactComponent as Lock } from "../../assets/icons/lock.svg";
 
@@ -11,6 +11,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import AssignTaskWeek from "./AssignTaskWeek";
 
 function AssignTask() {
   const dayTasks = [

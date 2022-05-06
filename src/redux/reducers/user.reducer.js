@@ -19,7 +19,10 @@ import {
   GET_COURSE_LIST_FAILURE,
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
-  POSt_ADD_COURSE_COMMENT_FAILURE,
+  POST_ADD_COURSE_COMMENT_FAILURE,
+  POST_ADD_TECHNOLOGY_REQUEST,
+  POST_ADD_TECHNOLOGY_SUCCESS,
+  POST_ADD_TECHNOLOGY_FAILURE,
 } from "../../constants";
 
 export const userReducer = (
@@ -50,7 +53,7 @@ export const addCommentReducer = (
     case POST_ADD_COURSE_COMMENT_SUCCESS:
       return { loading: false, commentInfo: action.commentInfo };
 
-    case POSt_ADD_COURSE_COMMENT_FAILURE:
+    case POST_ADD_COURSE_COMMENT_FAILURE:
       return { loading: false, error: action.error };
     default:
       return currentState;
@@ -133,6 +136,23 @@ export const addCandidateReducer = (
     case POST_ADD_CANDIDATE_SUCCESS:
       return { loading: false, candidatesInfo: action.payload };
     case POST_ADD_CANDIDATE_FAILURE:
+      return { loading: false, error: action.error };
+    default:
+      return currentState;
+  }
+};
+
+//add technology
+export const addTechnologyReducer = (
+  currentState = { loading: true, candidatesInfo: null },
+  action
+) => {
+  switch (action.type) {
+    case POST_ADD_TECHNOLOGY_REQUEST:
+      return { loading: true };
+    case POST_ADD_TECHNOLOGY_SUCCESS:
+      return { loading: false, candidatesInfo: action.payload };
+    case POST_ADD_TECHNOLOGY_FAILURE:
       return { loading: false, error: action.error };
     default:
       return currentState;

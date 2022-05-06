@@ -19,7 +19,10 @@ import {
   GET_COURSE_LIST_FAILURE,
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
-  POSt_ADD_COURSE_COMMENT_FAILURE,
+  POST_ADD_COURSE_COMMENT_FAILURE,
+  POST_ADD_TECHNOLOGY_REQUEST,
+  POST_ADD_TECHNOLOGY_SUCCESS,
+  POST_ADD_TECHNOLOGY_FAILURE,
 } from "../../constants";
 
 import axiosInstance from "../../api";
@@ -71,7 +74,28 @@ export const candidatesList = (userInfo) => async (dispatch) => {
         Authorization: `Bearer ${userInfo.token}`,
       },
     });
-    console.log('data in actions',data)
+    console.log("data in actions", data);
+    dispatch({
+      type: GET_CANDIDATE_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_CANDIDATE_FAILURE,
+      error: error,
+    });
+  }
+};
+
+export const candidatesListIntern = (userInfo) => async (dispatch) => {
+  dispatch({ type: GET_CANDIDATE_REQUEST });
+  try {
+    const { data } = await axiosInstance.get("/candidates?designation=intern", {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    console.log("data in actions", data);
     dispatch({
       type: GET_CANDIDATE_SUCCESS,
       payload: data.data,
@@ -127,13 +151,32 @@ export const deleteCandidate = (userInfo, candidateId) => async (dispatch) => {
   }
 };
 
-export const addCandidate = (userInfo) => async (dispatch) => {
-  dispatch({ type: POST_ADD_CANDIDATE_REQUEST });
-  console.log("user", userInfo.token);
+export const addTechnology = (userInfo, title) => async (dispatch) => {
+  dispatch({ type: POST_ADD_TECHNOLOGY_REQUEST });
+  console.log("user fghjk", title);
   try {
-    const { data } = await axiosInstance.post("/candidate", {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
+    const { data } = await axiosInstance.post( `/technology?title=${title}`, {
+        headers: { Authorization: `Bearer ${userInfo.token}` }
+      }
+    );
+    dispatch({
+      type: POST_ADD_TECHNOLOGY_SUCCESS,
+      payload: data.data,
     });
+  } catch (error) {
+    dispatch({
+      type: POST_ADD_TECHNOLOGY_FAILURE,
+      error: error,
+    });
+  }
+};
+export const addCandidate = (userInfo, details) => async (dispatch) => {
+  dispatch({ type: POST_ADD_CANDIDATE_REQUEST });
+  try {
+    const { data } = await axiosInstance.post( "/candidate", details, {
+        headers: { Authorization: `Bearer ${userInfo.token}` }
+      }
+    );
     dispatch({
       type: POST_ADD_CANDIDATE_SUCCESS,
       payload: data.data,
@@ -185,7 +228,7 @@ export const addCourseComment = (requestBody, userInfo) => async (dispatch) => {
     });
   } catch (error) {
     dispatch({
-      type: POSt_ADD_COURSE_COMMENT_FAILURE,
+      type: POST_ADD_COURSE_COMMENT_FAILURE,
       error: error,
     });
   }

@@ -8,12 +8,16 @@ import Modal from "@mui/material/Modal";
 import { ReactComponent as DownArrow } from "../../assets/icons/down-arrow.svg";
 import { ReactComponent as ModalDesign } from "../../assets/icons/modal-bg-design.svg";
 import ChipTechnology from "../Technology/ChipTechnology";
-import { candidatesList } from "../../redux/actions/user.actions";
+import {
+  candidatesList,
+  candidatesListIntern,
+  addCandidate,
+} from "../../redux/actions/user.actions";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 
 function HrHome() {
-  const history = useHistory();
+  const dispatch = useDispatch();
+  const candidateItems = useSelector((state) => state.candidatesList);
   const userSignin = useSelector((state) => state.userSignin);
   const [subMenu, setSubMenu] = useState(false);
   {
@@ -28,12 +32,45 @@ function HrHome() {
   const [open1, setOpen1] = useState(false);
   const handleOpen1 = () => setOpen1(true);
   const handleClose1 = () => setOpen1(false);
+  const addNewCandidate = useSelector((state) => state.addCandidate);
+  // console.log("bhfeeeeeeee", addNewCandidate);
+  const [inputField, setInputField] = useState({
+    firstName: "",
+    lastName: "",
+    emailID: "",
+    dateOfJoining: "",
+    designation: "",
+    startDate: "",
+    courseAccess: "",
+    skills: "",
+    technology: [""],
+  });
+
+  //add candidate form submit
+  const handleSubmitForm = () => {
+    dispatch(addCandidate(userSignin.userInfo, inputField)).then(() => {
+      if (designation === "FT-Developer")
+        dispatch(candidatesList(userSignin.userInfo));
+      if (designation === "Intern")
+        dispatch(candidatesListIntern(userSignin.userInfo));
+    });
+    setOpen(false);
+  };
 
   //Candidate Array
-  const dispatch = useDispatch();
-  const candidateItems = useSelector((state) => state.candidatesList);
-  console.log(candidateItems);
 
+  //full time candidates
+  const [designation, setDesignation] = useState("FT-Developer");
+  const handleFullTime = () => {
+    setDesignation("FT-Developer");
+    dispatch(candidatesList(userSignin.userInfo));
+  };
+
+  //intern
+  const handleIntern = () => {
+    setDesignation("Intern");
+    dispatch(candidatesListIntern(userSignin.userInfo));
+  };
   const style = {
     position: "absolute",
     top: "50%",
@@ -49,14 +86,8 @@ function HrHome() {
   };
 
   useEffect(() => {
-    console.log("candidateItems", candidateItems);
     dispatch(candidatesList(userSignin.userInfo));
   }, []);
-
-  const handleSingleCandidate = (id) => {
-    // console.log("candidate id",id)
-    history.push(`/candidateProfile/id=${id}`);
-  };
 
   return (
     <div className="hrHome">
@@ -103,22 +134,60 @@ function HrHome() {
             <div className="hrHome-modal-form-box">
               <div className="hrHome-modal-form-box-1">
                 <label htmlFor="">First Name</label>
-                <InputField placeholder={"type here"} />
+                <InputField
+                  value="firstName"
+                  name="firstName"
+                  placeholder={"type here"}
+                  onChange={(e) =>
+                    setInputField({
+                      ...inputField,
+                      firstName: e.target.value,
+                    })
+                  }
+                />
               </div>
               <div className="hrHome-modal-form-box-2">
                 <label htmlFor="">Last Name</label>
-                <InputField placeholder={"type here"} />
+                <InputField
+                  placeholder={"type here"}
+                  name="lastName"
+                  value={"lastName"}
+                  onChange={(e) =>
+                    setInputField({
+                      ...inputField,
+                      lastName: e.target.value,
+                    })
+                  }
+                />
               </div>
             </div>
             <div className="hrHome-modal-form-box">
               <div className="hrHome-modal-form-box-1">
                 <label htmlFor="">Email</label>
-                <InputField placeholder={"example@gmail.com"} />
+                <InputField
+                  placeholder={"example@gmail.com"}
+                  name="emailID"
+                  value={"emailID"}
+                  onChange={(e) =>
+                    setInputField({
+                      ...inputField,
+                      emailID: e.target.value,
+                    })
+                  }
+                />
               </div>
               <div className="hrHome-modal-form-box-2">
                 <label htmlFor="">Date of joining</label>
                 <InputField
                   type={"date"}
+                  name="dateOfJoining"
+                  value={"dateOfJoining"}
+                  onChange={(e) =>
+                    setInputField({
+                      ...inputField,
+                      dateOfJoining: e.target.value,
+                    })
+                  }
                   style={{
                     textTransform: "uppercase",
                     color: "#605F62",
@@ -130,12 +199,35 @@ function HrHome() {
             <div></div>
 
             <label htmlFor="">Designation</label>
-            <InputField placeholder={"type here"} />
+            <InputField
+              placeholder={"type here"}
+              name="designation"
+              value={"designation"}
+              onChange={(e) =>
+                setInputField({
+                  ...inputField,
+                  designation: e.target.value,
+                })
+              }
+            />
             <label htmlFor="">Technology</label>
-            <InputField placeholder={"type here"} />
-            <label htmlFor="">Start Date</label>
-            <InputField placeholder={"type here"} />
-            <button className="hrHome-modal-btn">Save</button>
+            <InputField
+              placeholder={"type here"}
+              onChange={(e) =>
+                setInputField({
+                  ...inputField,
+                  technology: e.target.value,
+                })
+              }
+            />
+
+            <button
+              className="hrHome-modal-btn"
+              type="submit"
+              onClick={() => handleSubmitForm()}
+            >
+              Save
+            </button>
           </div>
         </Box>
       </Modal>
@@ -151,18 +243,8 @@ function HrHome() {
               />
               {subMenu && (
                 <div className="hrHome-nav-menu">
-                  <Link
-                    to="/home"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <li>Full Time</li>
-                  </Link>
-                  <Link
-                    to="/internHome"
-                    style={{ textDecoration: "none", color: "black" }}
-                  >
-                    <li>Intern</li>
-                  </Link>
+                  <li onClick={handleFullTime}>Full Time</li>
+                  <li onClick={handleIntern}>Intern</li>
                 </div>
               )}
             </th>
@@ -175,13 +257,9 @@ function HrHome() {
             candidateItems.candidatesInfo.map((item, index) => {
               return (
                 <>
-                  
-                  {/* {item.designation === "Intern" ? ( */}
-                    <HrHomeCandidate
-                      data={item}
-                      onClick={() => handleSingleCandidate(item.id)}
-                    />
-                  {/* ) : null} */}
+                  {item.designation === designation ? (
+                    <HrHomeCandidate data={item} />
+                  ) : null}
                 </>
               );
             })}

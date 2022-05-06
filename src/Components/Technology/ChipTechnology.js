@@ -4,24 +4,17 @@ import Chip from "@mui/material/Chip";
 import InputField from "../InputField/InputField";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getTechAction } from "../../redux/actions/user.actions";
+import { getTechAction, addTechnology } from "../../redux/actions/user.actions";
 
 function ChipTechnology() {
   const userSignin = useSelector((state) => state.userSignin);
-  const techRequest = useSelector((state) => state.techRequest);
+  const techRequest = useSelector((state) => state.getTechAction);
+  const addTech = useSelector((state) => state.addTechnology);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    // console.log(
-    //   "data",
-    //   techRequest.data.map((item) => item.title)
-    // );
-    getTech();
-  }, []);
-
-  const getTech = () => {
     dispatch(getTechAction(userSignin.userInfo));
-  };
+  }, []);
 
   const [chips, setChips] = useState([
     "React.js",
@@ -37,14 +30,21 @@ function ChipTechnology() {
     border: "none",
     borderRadius: "5px",
   };
-  const addTechnology = (e) => {
+  const addTechnologyss = (e) => {
     e.preventDefault();
     setChips([...chips, inputValue]);
     setInputValue("");
   };
 
+  const handleSave = () => {
+    dispatch(addTechnology(userSignin.userInfo, inputValue)).then((res) => {
+      setChips([...chips, inputValue]);
+      dispatch(getTechAction(userSignin.userInfo));
+    });
+  };
+
   return (
-    <form className="hrHome-modal-form" onSubmit={addTechnology}>
+    <form className="hrHome-modal-form" onSubmit={addTechnologyss}>
       <label htmlFor="">Add New Technology</label>
       <InputField
         placeholder={"type here"}
@@ -53,11 +53,6 @@ function ChipTechnology() {
       />
       <label htmlFor="">Saved Technology</label>
       <div className="hrHome-modal-technologies">
-        {/* <div className="hrHome-modal-technology-chip"></div> */}
-        {/* {console.log(
-          "array",
-          techRequest.data.map((item) => item.title)
-        )} */}
         {chips.map((chipName) => (
           <Chip
             sx={chipStyle}
@@ -67,7 +62,9 @@ function ChipTechnology() {
           />
         ))}
       </div>
-      <button className="hrHome-modal-btn">Save Data</button>
+      <button className="hrHome-modal-btn" onClick={handleSave}>
+        Save Data
+      </button>
     </form>
   );
 }
