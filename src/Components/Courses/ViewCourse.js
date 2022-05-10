@@ -41,7 +41,7 @@ function ViewCourse({ data }) {
   };
 
   useEffect(() => {
-    console.log("comments", comments);
+    console.log("commentsdataaa", data);
   }, []);
   return (
     <div className="viewCourse">
@@ -52,7 +52,7 @@ function ViewCourse({ data }) {
               <LeftArrow />
             </Link>
             <div className="viewCourse-title">
-              <h3>fundamental of user experince design</h3>
+              {/* <h3>{data.courseName}</h3> */}
             </div>
           </div>
           <div className="viewCourse-right">

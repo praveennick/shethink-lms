@@ -3,7 +3,7 @@ import { Box } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Login.css";
-
+import {ROLES} from '../../constant/roles'
 import loginImage from "../../assets/images/000.png";
 import logo from "../../assets/images/logo.svg";
 import { userSigninAction } from "../../redux/actions/user.actions";
@@ -23,16 +23,15 @@ function Login(props) {
   };
 
   useEffect(() => {
-    // console.log( userSignin.userInfo?.desgination==="FT-HR")
-    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="FT-HR") {
+    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination===ROLES.HR) {
       props.history.push("/home"); 
   
     }else
-    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="Intern") {
+    if (userSignin && userSignin.userInfo && userSignin.userInfo?.desgination===ROLES.INTERN) {
       props.history.push("/dashbord"); 
   
     }else
-    if(userSignin && userSignin.userInfo && userSignin.userInfo?.desgination==="FT-Developer"){
+    if(userSignin && userSignin.userInfo && userSignin.userInfo?.desgination===ROLES.FULL_TIME){
       props.history.push("/dashboard"); 
     }
     console.log("userSignin.userInfo", userSignin);

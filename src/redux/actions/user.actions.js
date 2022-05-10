@@ -20,13 +20,10 @@ import {
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
   POST_ADD_COURSE_COMMENT_FAILURE,
-  POST_ADD_TECHNOLOGY_REQUEST,
-  POST_ADD_TECHNOLOGY_SUCCESS,
-  POST_ADD_TECHNOLOGY_FAILURE,
+ 
 } from "../../constants";
 
 import axiosInstance from "../../api";
-import { async } from "rxjs";
 
 export const userSigninAction = (requestBody) => async (dispatch) => {
   dispatch({
@@ -44,24 +41,6 @@ export const userSigninAction = (requestBody) => async (dispatch) => {
     dispatch({
       type: USER_SIGNIN_FAILURE,
       error,
-    });
-  }
-};
-
-export const getTechAction = (userInfo) => async (dispatch) => {
-  dispatch({ type: "GET_TECH_REQUEST" });
-  try {
-    const { data } = await axiosInstance.get("/technology", {
-      headers: { Authorization: `Bearer ${userInfo.token}` },
-    });
-    dispatch({
-      type: "GET_TECH_SUCCESS",
-      payload: data.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: "GET_TECH_FAILURE",
-      error: error,
     });
   }
 };
@@ -151,32 +130,12 @@ export const deleteCandidate = (userInfo, candidateId) => async (dispatch) => {
   }
 };
 
-export const addTechnology = (userInfo, title) => async (dispatch) => {
-  dispatch({ type: POST_ADD_TECHNOLOGY_REQUEST });
-  console.log("user fghjk", title);
-  try {
-    const { data } = await axiosInstance.post( `/technology?title=${title}`, {
-        headers: { Authorization: `Bearer ${userInfo.token}` }
-      }
-    );
-    dispatch({
-      type: POST_ADD_TECHNOLOGY_SUCCESS,
-      payload: data.data,
-    });
-  } catch (error) {
-    dispatch({
-      type: POST_ADD_TECHNOLOGY_FAILURE,
-      error: error,
-    });
-  }
-};
 export const addCandidate = (userInfo, details) => async (dispatch) => {
   dispatch({ type: POST_ADD_CANDIDATE_REQUEST });
   try {
-    const { data } = await axiosInstance.post( "/candidate", details, {
-        headers: { Authorization: `Bearer ${userInfo.token}` }
-      }
-    );
+    const { data } = await axiosInstance.post("/candidate", details, {
+      headers: { Authorization: `Bearer ${userInfo.token}` },
+    });
     dispatch({
       type: POST_ADD_CANDIDATE_SUCCESS,
       payload: data.data,

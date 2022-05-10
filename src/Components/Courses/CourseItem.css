@@ -44,3 +44,7 @@
   font-weight: bold;
   cursor: pointer;
 }
+.upper-right{
+  display: flex;
+  flex-direction: column;
+}

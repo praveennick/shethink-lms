@@ -5,25 +5,28 @@ import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axiosInstance from "../../api";
-import { candidatesList, candidatesListIntern } from "../../redux/actions/user.actions";
-
+import {
+  candidatesList,
+  candidatesListIntern,
+} from "../../redux/actions/user.actions";
+import { ROLES } from "../../constant/roles";
 function HrHomeCandidate({ data, onClick }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
 
-
   const [subMenu, setSubMenu] = useState(false);
 
-  const handleDelete = async (id,designation) => {
-
+  const handleDelete = async (id, designation) => {
     axiosInstance
       .delete(`/candidate?id=${id}`, {
         headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
       })
       .then((res) => {
-        if(designation==="FT-Developer")dispatch(candidatesList(userSignin.userInfo));
-        if(designation==="Intern")dispatch(candidatesListIntern(userSignin.userInfo));
+        if (designation === ROLES.FULL_TIME)
+          dispatch(candidatesList(userSignin.userInfo));
+        if (designation === ROLES.INTERN)
+          dispatch(candidatesListIntern(userSignin.userInfo));
       });
   };
   const handleSingleCandidate = (id) => {
@@ -61,7 +64,7 @@ function HrHomeCandidate({ data, onClick }) {
           </div>
         )}
       </td>
-      <td onClick={() => handleDelete(data.id,data.designation)}>
+      <td onClick={() => handleDelete(data.id, data.designation)}>
         <DeleteIcon className="hrHomeCandidate-deleteIcon" />
       </td>
     </tr>

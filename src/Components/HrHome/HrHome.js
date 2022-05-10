@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./HrHome.css";
+import { ROLES } from "../../constant/roles";
 import HrHomeCandidate from "./HrHomeCandidate";
 import InputField from "../InputField/InputField";
 import Box from "@mui/material/Box";
@@ -13,7 +14,6 @@ import {
   candidatesListIntern,
   addCandidate,
 } from "../../redux/actions/user.actions";
-import { Link } from "react-router-dom";
 
 function HrHome() {
   const dispatch = useDispatch();
@@ -26,6 +26,7 @@ function HrHome() {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
   {
     /* add  new candidate*/
   }
@@ -49,9 +50,9 @@ function HrHome() {
   //add candidate form submit
   const handleSubmitForm = () => {
     dispatch(addCandidate(userSignin.userInfo, inputField)).then(() => {
-      if (designation === "FT-Developer")
+      if (designation === ROLES.FULL_TIME)
         dispatch(candidatesList(userSignin.userInfo));
-      if (designation === "Intern")
+      if (designation === ROLES.INTERN)
         dispatch(candidatesListIntern(userSignin.userInfo));
     });
     setOpen(false);
@@ -60,15 +61,15 @@ function HrHome() {
   //Candidate Array
 
   //full time candidates
-  const [designation, setDesignation] = useState("FT-Developer");
+  const [designation, setDesignation] = useState(ROLES.FULL_TIME);
   const handleFullTime = () => {
-    setDesignation("FT-Developer");
+    setDesignation(ROLES.FULL_TIME);
     dispatch(candidatesList(userSignin.userInfo));
   };
 
   //intern
   const handleIntern = () => {
-    setDesignation("Intern");
+    setDesignation(ROLES.INTERN);
     dispatch(candidatesListIntern(userSignin.userInfo));
   };
   const style = {
