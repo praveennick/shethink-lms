@@ -6,6 +6,8 @@
   border-radius: 10px;
   min-width: 45%;
   max-width: 45%;
+  height: 245px;
+  max-height: 245px;
   display: flex;
   padding: 15px;
   position: relative;
@@ -16,6 +18,24 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.module_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 25px 35px rgba(0, 0, 0, 0.03);
+  width: 60%;
+  border-radius: 50%;
+  height: 60%;
+}
+.module_logo_latter {
+  font-family: "Nunito Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 55px;
+  line-height: 127px;
+  text-transform: capitalize;
+  color: #1c1b1f;
 }
 
 .moduleItem-right {

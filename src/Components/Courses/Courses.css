@@ -47,8 +47,19 @@
   padding-right: 40px;
   text-decoration: none;
 }
+.active-course-category {
+  margin-top: 15px;
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+  padding-right: 40px;
+  text-decoration: none;
+  color: #6750a4;
+  cursor: pointer;
+}
 
-.course-category:hover, .course-category:focus{
+.course-category:hover,
+.course-category:focus {
   color: #6750a4;
   cursor: pointer;
 }

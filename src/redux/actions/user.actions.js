@@ -5,6 +5,9 @@ import {
   GET_CANDIDATE_REQUEST,
   GET_CANDIDATE_SUCCESS,
   GET_CANDIDATE_FAILURE,
+  GET_TECHNOLOGY_REQUEST,
+  GET_TECHNOLOGY_SUCCESS,
+  GET_TECHNOLOGY_FAILURE,
   GET_SINGLE_CANDIDATE_REQUEST,
   GET_SINGLE_CANDIDATE_SUCCESS,
   GET_SINGLE_CANDIDATE_FAILURE,
@@ -20,7 +23,9 @@ import {
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
   POST_ADD_COURSE_COMMENT_FAILURE,
- 
+  GET_VIEW_COURSE_REQUEST,
+  GET_VIEW_COURSE_SUCCESS,
+  GET_VIEW_COURSE_FAILURE,
 } from "../../constants";
 
 import axiosInstance from "../../api";
@@ -61,6 +66,27 @@ export const candidatesList = (userInfo) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: GET_CANDIDATE_FAILURE,
+      error: error,
+    });
+  }
+};
+
+export const getTechnology = (userInfo) => async (dispatch) => {
+  dispatch({ type: GET_TECHNOLOGY_REQUEST });
+  try {
+    const { data } = await axiosInstance.get("/technology", {
+      headers: {
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    });
+    console.log("data in actionsssssssss", data);
+    dispatch({
+      type: GET_TECHNOLOGY_SUCCESS,
+      payload: data.data,
+    });
+  } catch (error) {
+    dispatch({
+      type: GET_TECHNOLOGY_FAILURE,
       error: error,
     });
   }

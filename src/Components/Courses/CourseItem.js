@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./CourseItem.css";
 import { ReactComponent as LinkedinLogo } from "../../assets/icons/linkedin-square.svg";
 import moment from "moment";
@@ -6,11 +6,12 @@ import { ROLES } from "../../constant/roles";
 import Modal from "@mui/material/Modal";
 import ViewCourse from "./ViewCourse";
 import DeletePopup from "../DeletePopup";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
+
 function CourseItem({ data }) {
+  const navigate = useHistory();
   const [deleteModal, setDeleteModal] = useState(false);
-  console.log(data.courseID, "courseID");
   const userSignin = useSelector((state) => state.userSignin);
 
   //delete course
@@ -20,13 +21,14 @@ function CourseItem({ data }) {
     setOpen1(true);
     setDeleteModal(true);
   };
+ 
 
   return (
     <div className="courseItem">
       <div className="courseItem-upper">
         <div className="upper-left">
           <h3 className="courseItem-heading">{data.courseName}</h3>
-          <p>Creation Date - {moment(data.createdAt).format("d/MMM/Y")}</p>
+          <p>Creation Date - {moment(data.createdAt).format("DD/MMM/Y")}</p>
         </div>
         <div className="upper-right">
           <h4>Created by-{data.author}</h4>
@@ -63,9 +65,19 @@ function CourseItem({ data }) {
         <p className="courseItem-disc">discription- {data.courseDescription}</p>
 
         <p>
-          <Link className="viewCourse-btn" to="/viewCourse" >
+          <div
+            className="viewcourse-btn"
+            onClick={() =>
+              navigate.push({
+                pathname: "/viewcourse",
+                state: {
+                  courseID: data.courseID,
+                },
+              })
+            }
+          >
             View Course
-          </Link>
+          </div>
         </p>
       </div>
     </div>

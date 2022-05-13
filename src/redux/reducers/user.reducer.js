@@ -20,7 +20,11 @@ import {
   POST_ADD_COURSE_COMMENT_REQUEST,
   POST_ADD_COURSE_COMMENT_SUCCESS,
   POST_ADD_COURSE_COMMENT_FAILURE,
-} from "../../constants";
+  
+  GET_TECHNOLOGY_REQUEST,
+  GET_TECHNOLOGY_SUCCESS,
+  GET_TECHNOLOGY_FAILURE,
+  } from "../../constants";
 
 export const userReducer = (
   currentState = { loading: true, userInfo: null },
@@ -39,11 +43,28 @@ export const userReducer = (
   }
 };
 
+export const getTechnologyReducer = (
+  currentState = { loading: true, commentInfo: null },
+  action
+) => {
+  switch (action.type) {
+    case GET_TECHNOLOGY_REQUEST:
+      return { loading: true };
+    case GET_TECHNOLOGY_SUCCESS:
+      return { loading: false, commentInfo: action.payload };
+
+    case GET_TECHNOLOGY_FAILURE:
+      return { loading: false, error: action.error };
+    default:
+      return currentState;
+  }
+};
+
+
 export const addCommentReducer = (
   currentState = { loading: true, commentInfo: null },
   action
 ) => {
-  console.log("commentInfo", action.commentInfo);
   switch (action.type) {
     case POST_ADD_COURSE_COMMENT_REQUEST:
       return { loading: true };
@@ -77,7 +98,6 @@ export const singleCandidateReducer = (
   currentState = { loading: true, candidateInfo: null },
   action
 ) => {
-  // console.log("action", action);
   switch (action.type) {
     case GET_SINGLE_CANDIDATE_REQUEST:
       return { loading: true };

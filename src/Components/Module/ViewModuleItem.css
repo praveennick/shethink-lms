@@ -1,14 +1,14 @@
-.viewModuleItem {
+.viewmoduleItem {
   border: 1px solid #e1e1e1;
   border-radius: 12px;
   padding: 20px;
   margin-bottom: 20px;
 }
-.viewModuleItem-header {
+.viewmoduleItem-header {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
 }
-.viewModuleItem-header-title {
+.viewmoduleItem-header-title {
   margin-left: 10px;
 }

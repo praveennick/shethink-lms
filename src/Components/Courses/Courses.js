@@ -1,25 +1,49 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./Courses.css";
 import { ReactComponent as CourseDesign } from "../../assets/images/course-design.svg";
 import { ReactComponent as CourseBook } from "../../assets/images/Reading A Book.svg";
 import { useDispatch, useSelector } from "react-redux";
 import CourseItem from "./CourseItem";
-import { courseList, pageNameAction } from "../../redux/actions/user.actions";
+import {
+  courseList,
+  pageNameAction,
+  getTechnology,
+} from "../../redux/actions/user.actions";
 
 function Courses() {
   const userSignin = useSelector((state) => state.userSignin);
   const dispatch = useDispatch();
   const listOfCourses = useSelector((state) => state.courseList);
   const pageName = useSelector((state) => state.pageNameAction);
+  const getSkills = useSelector((state) => state.getTechnology);
+  const levels = ["Beginners", "Advance"];
+  const [level, setLevel] = useState("Beginner");
+  const [currentLevel, setCurrentLevel] = useState(0);
+  const [fetchedSkills, setfetchedSkills] = useState([]);
 
-  
   useEffect(() => {
     dispatch(courseList(userSignin.userInfo));
+    dispatch(getTechnology(userSignin.userInfo));
   }, []);
 
   useEffect(() => {
-    console.log("listOfCourses", listOfCourses);
-  }, [listOfCourses]);
+    let skill = [];
+    if (getSkills.commentInfo) {
+      getSkills.commentInfo?.map((item) => {
+        return skill.push(item.title);
+      });
+    }
+    setfetchedSkills(skill);
+  });
+
+  const handleBeginners = () => {
+    setLevel("Beginner");
+    setCurrentLevel(0);
+  };
+  const handleAdvance = () => {
+    setLevel("Advance");
+    setCurrentLevel(1);
+  };
 
   return (
     <div className="courses">
@@ -36,8 +60,20 @@ function Courses() {
         <CourseBook className="course-book" />
       </div>
       <div className="course-category">
-        <div className="course-category" >For Beginners</div>
-        <div className="course-category" >Advance Learning</div>
+        {levels?.map((value, index) => {
+          return (
+            <div
+              className={
+                index === currentLevel
+                  ? "active-course-category"
+                  : "course-category"
+              }
+              onClick={index === 0 ? handleBeginners : handleAdvance}
+            >
+              For{value}
+            </div>
+          );
+        })}
       </div>
       <div className="select-courses">
         <label htmlFor="courses" className="select-courses-label">
@@ -45,16 +81,20 @@ function Courses() {
         </label>
         <select name="courses" className="select-courses-selectTag">
           <option value="select course">Select Course</option>
-          <option value="react">React</option>
-          <option value="node">Node</option>
-          <option value="mongodb">Mongodb</option>
-          <option value="express">Express</option>
-          <option value="angular">Angular</option>
+          {fetchedSkills?.map((item) => (
+            <option value={item}>{item}</option>
+          ))}
         </select>
       </div>
 
       {listOfCourses.userInfo?.map((item, index) => {
-        return <CourseItem key={item.courseID} data={item} />;
+        return (
+          <>
+            {item.level === level ? (
+              <CourseItem key={item.courseID} data={item} />
+            ) : null}
+          </>
+        );
       })}
     </div>
   );

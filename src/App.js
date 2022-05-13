@@ -13,6 +13,7 @@ import InternModel from "./Components/InternModal/InternModel";
 import ScrollToTop from "./Components/ScrollToTop";
 import ViewModule from "./Components/Module/ViewModule";
 import CreateModule from "./Components/Module/CreateModule";
+import CreateCourse from './Components/Module/CreateCourse'
 import EditModule from "./Components/Module/EditModule";
 import InternHistory from "./Components/InternModal/InternHistory";
 import CandidateProfile from "./Components/Profile/CandidateProfile";
@@ -34,12 +35,13 @@ function App() {
               <Route exact path="/home" component={HrHome} />
               <Route exact path="/courses" component={Courses} />
               <Route exact path="/profile" component={MyProfile} />
-              <Route exact path="/viewCourse" component={ViewCourse} />
+              <Route exact path="/viewcourse" component={ViewCourse} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/modules" component={Modules} />
               <Route exact path="/internModel" component={InternModel} />
-              <Route exact path="/viewModule" component={ViewModule} />
+              <Route exact path="/viewmodule" component={ViewModule} />
               <Route exact path="/createModule" component={CreateModule} />
+              <Route exact path="/createcourse" component={CreateCourse} />
               <Route exact path="/editModule" component={EditModule} />
               <Route exact path="/internHistory" component={InternHistory} />
               <Route exact path="/newCourse" component={NewCourse} />

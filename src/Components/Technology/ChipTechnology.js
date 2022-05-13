@@ -2,28 +2,32 @@ import React, { useEffect, useState } from "react";
 import axiosInstance from "../../api";
 import Chip from "@mui/material/Chip";
 import InputField from "../InputField/InputField";
-import { useSelector } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getTechnology } from "../../redux/actions/user.actions";
 function ChipTechnology() {
+  const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
+  const getTechnologyy = useSelector((state) => state.getTechnology);
 
   const [inputValue, setInputValue] = useState("");
   const [chips, setChips] = useState([]);
+  useEffect(() => {
+    fun();
+  }, []);
 
   useEffect(() => {
-    axiosInstance
-      .get(`/technology`, {
-        headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
-      })
-      .then((res) => {
-        console.log(res, "data");
-        if (res.data?.code === 200) {
-          const data = res.data.data.map((i) => i.title);
-          setChips(data);
-          console.log({ data });
-        }
+    let titles = [];
+    if (getTechnologyy?.commentInfo) {
+      getTechnologyy?.commentInfo?.forEach((item) => {
+        titles.push(item.title);
       });
-  }, []);
+      setChips(titles);
+    }
+  }, [getTechnologyy]);
+
+  const fun = async () => {
+    dispatch(getTechnology(userSignin.userInfo));
+  };
 
   const chipStyle = {
     bgcolor: "#F4F4F4",

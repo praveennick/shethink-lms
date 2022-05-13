@@ -6,29 +6,29 @@ import { ReactComponent as HeartLogo } from "../../assets/icons/heart.svg";
 import { ReactComponent as CommentLogo } from "../../assets/icons/comment-icon.svg";
 import { ReactComponent as PriceTag } from "../../assets/icons/price-tag.svg";
 
-import viewCourseMedia1 from "../../assets/images/viewCourse-banner-1.png";
+import viewcourseMedia1 from "../../assets/images/viewCourse-banner-1.png";
 
 function ViewModuleItem({ hide }) {
   return (
-    <div className="viewModuleItem">
-      <div className="viewModuleItem-header">
+    <div className="viewmoduleItem">
+      <div className="viewmoduleItem-header">
         <PriceTag />
-        <h3 className="viewModuleItem-header-title">Reference Link 1</h3>
+        <h3 className="viewmoduleItem-header-title">Reference Link 1</h3>
       </div>
-      <div className="viewCourse-media-box">
-        <img src={viewCourseMedia1} alt="" className="viewCourseMediaImg" />
+      <div className="viewcourse-media-box">
+        <img src={viewcourseMedia1} alt="" className="viewcourseMediaImg" />
         <a
           href="https://www.youtube.com/watch?v=h3sxUR6i8tc"
-          className="viewCourseMediaLink"
+          className="viewcourseMediaLink"
         >
           https://www.youtube.com/watch?v=h3sxUR6i8tc
         </a>
       </div>
-      <div className="viewCourse-name">
+      <div className="viewcourse-name">
         <h5>Created By - Praveen Kumar</h5>
-        <LinkedinLogo className="viewCourse-linkedin-logo" />
+        <LinkedinLogo className="viewcourse-linkedin-logo" />
       </div>
-      <div className="viewCourse-description">
+      <div className="viewcourse-description">
         <p>
           <b>description</b>- in this video lecture you get some basic idea of
           user exoerince design.f user exoerince designf user exoerince designf
@@ -36,14 +36,14 @@ function ViewModuleItem({ hide }) {
           user exoerince design
         </p>
       </div>
-      <hr className="viewCourse-line" />
-      <div className="viewCourse-likeComment-box" style={hide}>
-        <div className="viewCourse-likes">
-          <HeartLogo className="viewCourse-heartlogo" />
+      <hr className="viewcourse-line" />
+      <div className="viewcourse-likeComment-box" style={hide}>
+        <div className="viewcourse-likes">
+          <HeartLogo className="viewcourse-heartlogo" />
           <p>24 Likes</p>
         </div>
-        <div className="viewCourse-comments">
-          <CommentLogo className="viewCourse-commentlogo" />
+        <div className="viewcourse-comments">
+          <CommentLogo className="viewcourse-commentlogo" />
           <p>4 Comments</p>
         </div>
       </div>

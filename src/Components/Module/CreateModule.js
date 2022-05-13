@@ -1,14 +1,12 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { useDropzone } from "react-dropzone";
-
 import "./CreateModule.css";
-
 import InputField from "../InputField/InputField";
-
 import { ReactComponent as UploadIcon } from "../../assets/icons/upload-icon.svg";
 import { ReactComponent as ClipIcon } from "../../assets/icons/clip-icon.svg";
-
+import axiosInstance from "../../api";
+import { useSelector } from "react-redux";
 function CreateModule() {
   const [onChangeValue, setOnChangeValue] = useState(false);
 
@@ -62,13 +60,27 @@ function CreateModule() {
     }),
     [isFocused, isDragAccept, isDragReject]
   );
+  //create module api
+  const [inputs, setInputs] = useState({
+    courseName: "",
+    courseDescription: "",
+    level: "",
+    refType: "",
+  });
 
-  // const files = acceptedFiles.map((file) => (
-  //   <li key={file.path}>
-  //     {/* {setUploadedFile({ file })} */}
-  //     {file.path} - {file.size} bytes
-  //   </li>
-  // ));
+  const userSignin = useSelector((state) => state.userSignin);
+
+  const handleCreate = () => {
+    console.log("post Click ");
+    try {
+      console.log("in Try Block ");
+      axiosInstance.post("/shethink/v1/course", inputs, {
+        headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
+      });
+    } catch (error) {
+      console.log(error, "from Post Api");
+    }
+  };
 
   const renderItems = () => {
     switch (onChangeValue) {
@@ -162,7 +174,12 @@ function CreateModule() {
           <label htmlFor="" className="createModule-label">
             Title of your Module
           </label>
-          <InputField placeholder={"Type Here"} />
+          <InputField
+            placeholder={"Type Here"}
+            onChange={(e) =>
+              setInputs({ ...inputs, courseName: e.target.value })
+            }
+          />
           <label htmlFor="" className="createModule-label">
             Description
           </label>
@@ -210,7 +227,10 @@ function CreateModule() {
             <Link className="createModule-back-btn" to="/modules">
               Back
             </Link>
-            <button className="createModule-publish-btn">
+            <button
+              className="createModule-publish-btn"
+              onClick={() => handleCreate()}
+            >
               Publish Your Module
             </button>
           </div>

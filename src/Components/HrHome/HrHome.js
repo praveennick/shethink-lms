@@ -65,12 +65,14 @@ function HrHome() {
   const handleFullTime = () => {
     setDesignation(ROLES.FULL_TIME);
     dispatch(candidatesList(userSignin.userInfo));
+    setSubMenu(!subMenu)
   };
 
   //intern
   const handleIntern = () => {
     setDesignation(ROLES.INTERN);
     dispatch(candidatesListIntern(userSignin.userInfo));
+    setSubMenu(!subMenu)
   };
   const style = {
     position: "absolute",

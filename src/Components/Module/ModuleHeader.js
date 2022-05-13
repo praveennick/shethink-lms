@@ -15,7 +15,7 @@ function ModuleHeader() {
           you can create your own course in which you share your refrence of
           learning with other’s
         </p>
-        <Link className="module-header-btn" to="/createModule">
+        <Link className="module-header-btn" to="/createcourse">
           Create New
         </Link>
       </div>

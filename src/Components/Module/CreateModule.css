@@ -89,6 +89,8 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
+  width: 60%;
+  padding: 0 20px;
 }
 .createModule-back-btn {
   background: #ffffff;

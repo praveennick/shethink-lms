@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ViewCourse.css";
-
+import axiosInstance  from "../../api";
 import { ReactComponent as LeftArrow } from "../../assets/icons/left-arrow.svg";
 import { ReactComponent as ThreeDotsVertical } from "../../assets/icons/three-dots-vertical.svg";
 import { ReactComponent as LinkedinLogo } from "../../assets/icons/linkedin-square.svg";
@@ -8,106 +8,113 @@ import { ReactComponent as HeartLogo } from "../../assets/icons/heart.svg";
 import { ReactComponent as CommentLogo } from "../../assets/icons/comment-icon.svg";
 import { ReactComponent as SmileLogo } from "../../assets/icons/smile.svg";
 import { ReactComponent as SendLogo } from "../../assets/icons/send-icon.svg";
-import viewCourseMedia1 from "../../assets/images/viewCourse-banner-1.png";
+import viewcourseMedia1 from "../../assets/images/viewCourse-banner-1.png";
 import CommentItem from "../Comments/CommentItem";
-import { Link } from "react-router-dom";
+import { Link,useHistory,useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addCourseComment } from "../../redux/actions/user.actions";
+import moment from "moment";
 
-function ViewCourse({ data }) {
+
+function ViewCourse(props) {
+  const history = useHistory();
   const [comment, setComment] = useState();
-
-  let courseID = localStorage.getItem("courseID");
-  console.log(courseID, "courseID");
-  console.log("datataaaa",data)
-
+  const location = useLocation();
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
-  const addComments = useSelector((state)=>state.addCourseComment)
-  console.log("comments",addComments)
-
+  const addComments = useSelector((state) => state.addCourseComment);
+  console.log("comments", addComments);
 
   const comments = useSelector((state) => state.addCourseComment);
 
   const postComment = (event) => {
     event.preventDefault();
-    dispatch(
-      addCourseComment(
-        { message: comment, courseID: courseID },
-        userSignin.userInfo
-      )
-    );
+    dispatch(addCourseComment({ message: comment }, userSignin.userInfo));
     setComment("");
   };
+  const ID = location.state.courseID?location.state.courseID:"";
+ 
+  const [courseDetail, setCourseDetail] = useState([])
+  const getCourseViewData=()=>{
+    try {
+      axiosInstance.get(`/listcourseById?id=${ID}`,{
+        headers:{ Authorization: `Bearer ${userSignin.userInfo.token}` }
+      }).then((res) => {
+      console.log(res.data.data,"API data From Course view")
+      setCourseDetail(res.data.data[0])
+      });
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  useEffect(() => { 
+    getCourseViewData();
+  },[]);
 
-  useEffect(() => {
-    console.log("commentsdataaa", data);
-  }, []);
+
   return (
-    <div className="viewCourse">
-      <div className="viewCourse-content">
-        <div className="viewCourse-header">
-          <div className="viewCourse-left">
-            <Link className="viewCourse-leftArrow-btn" to="/courses">
+    <div className="viewcourse">
+      <div className="viewcourse-content">
+        <div className="viewcourse-header">
+          <div className="viewcourse-left">
+            <Link className="viewcourse-leftArrow-btn" to="/courses">
               <LeftArrow />
             </Link>
-            <div className="viewCourse-title">
-              {/* <h3>{data.courseName}</h3> */}
+            <div className="viewcourse-title">
+              <h3>{courseDetail.courseName}</h3>
             </div>
           </div>
-          <div className="viewCourse-right">
+          <div className="viewcourse-right">
             <ThreeDotsVertical />
           </div>
         </div>
-        <div className="viewCourse-time">
-          <p>creation date- 23/ march/2022</p>
+        <div className="viewcourse-time">
+          <p>creation date-{moment(courseDetail.createdAt).format("d/MMM/Y")}</p>
         </div>
-        <div className="viewCourse-media-box">
-          <img src={viewCourseMedia1} alt="" className="viewCourseMediaImg" />
+        <div className="viewcourse-media-box">
+          <img src={viewcourseMedia1} alt="" className="viewcourseMediaImg" />
           <a
             href="https://www.youtube.com/watch?v=h3sxUR6i8tc"
-            className="viewCourseMediaLink"
+            className="viewcourseMediaLink"
           >
-            https://www.youtube.com/watch?v=h3sxUR6i8tc
+           {console.log(courseDetail.refType?.video,"aaaaaaaaaaaaa")}
+           {courseDetail.refType?.video}
           </a>
         </div>
-        <div className="viewCourse-name">
-          <h5>Created By - Praveen Kumar</h5>
+        <div className="viewcourse-name">
+          <h5>Created By - {courseDetail.author}</h5>
           <LinkedinLogo />
         </div>
-        <div className="viewCourse-description">
+        <div className="viewcourse-description">
           <p>
-            <b>description</b>- in this video lecture you get some basic idea of
-            user exoerince design.f user exoerince designf user exoerince
-            designf user exoerince designf user exoerince designf user exoerince
-            designf user exoerince design
+            <b>description</b>- {courseDetail.courseDescription}
           </p>
         </div>
-        <hr className="viewCourse-line" />
-        <div className="viewCourse-likeComment-box">
-          <div className="viewCourse-likes">
-            <HeartLogo className="viewCourse-heartlogo" />
+        <hr className="viewcourse-line" />
+        <div className="viewcourse-likeComment-box">
+          <div className="viewcourse-likes">
+            <HeartLogo className="viewcourse-heartlogo" />
             <p>24 Likes</p>
           </div>
-          <div className="viewCourse-comments">
-            <CommentLogo className="viewCourse-commentlogo" />
+          <div className="viewcourse-comments">
+            <CommentLogo className="viewcourse-commentlogo" />
             <p>4 Comments</p>
           </div>
         </div>
       </div>
-      <div className="viewCourse-comment-box">
-        <div className="viewCourse-comment-field">
-          <label htmlFor="" className="viewCourse-label">
+      <div className="viewcourse-comment-box">
+        <div className="viewcourse-comment-field">
+          <label htmlFor="" className="viewcourse-label">
             Comment
           </label>
-          <div className="viewCourse-inputField-with-icon">
-            <div className="viewCourse-inputField-icons" >
-              <SmileLogo className="viewCourse-smileLogo" />
-              <SendLogo className="viewCourse-sendLogo" onClick={postComment} />
+          <div className="viewcourse-inputField-with-icon">
+            <div className="viewcourse-inputField-icons">
+              <SmileLogo className="viewcourse-smileLogo" />
+              <SendLogo className="viewcourse-sendLogo" onClick={postComment} />
             </div>
             <input
               type="text"
-              className="viewCourse-inputField"
+              className="viewcourse-inputField"
               placeholder="Type a message..."
               onChange={(e) => setComment(e.target.value)}
               value={comment}
