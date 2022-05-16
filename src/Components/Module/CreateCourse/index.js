@@ -41,13 +41,17 @@ export default function CreateCourse() {
     body.append("courseDescription", inputs.courseDescription);
 
     axiosInstance
-      .post("/course", inputs, {
-        headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
+      .post("/course", body, {
+        headers: {
+          Authorization: `Bearer ${userSignin.userInfo.token}`,
+          "Content-Type": "multipart/from-data",
+        },
       })
       .then((res) => {
         console.log({ res });
       });
     console.log({ inputs });
+    console.log({ body });
   };
   return (
     <div className="createModule">
@@ -90,7 +94,6 @@ export default function CreateCourse() {
             Module Level
           </label>
           <select name="" id="" className="createModule-skill">
-            <option value="select">Select </option>
             <option value="beginners">For Beginners</option>
             <option value="advanced ">Advanced Learning</option>
           </select>
@@ -100,7 +103,7 @@ export default function CreateCourse() {
 
           <select
             className="createModule-skill"
-            onChange={(e) => setInputs({ inputs, refType: e.target.value })}
+            onChange={(e) => setInputs({ ...inputs, refType: e.target.value })}
             value={inputs.refType}
           >
             <option value="select">Select </option>
@@ -110,7 +113,6 @@ export default function CreateCourse() {
             <option value="write">Write Yourself</option>
           </select>
           <div className="createModule-renderItems">
-            {/* {renderItems()} */}
           </div>
         </form>
         <div className="createModule-btns">
