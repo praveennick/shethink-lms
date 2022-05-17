@@ -14,20 +14,14 @@ function Navbar() {
 
   // const [showNotification, setShowNotification] = useState(false);
 
-  const [navName, setNavName] = useState();
+  const [navName, setNavName] = useState("Dashbord");
 
   useEffect(() => {
     // setNavName(localStorage.getItem("name"))
+    console.log("11111111",localStorage.getItem("name"))
     setNavName(localStorage.getItem("name"));
     // window.addEventListener('storage', storageEventHandler, false);
-  }, []);
-
-  //   function storageEventHandler() {
-  //     console.log("hi from storageEventHandler")
-  //     // setLoggedInName(localStorage.getItem('name') || null)
-  //     setNavName((localStorage.getItem("name")) || null);
-
-  // }
+  }, [navName]);
 
   const logoutUser = () => {
     dispatch({

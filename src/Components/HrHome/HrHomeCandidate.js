@@ -5,6 +5,8 @@ import { ReactComponent as DeleteIcon } from "../../assets/icons/delete-icon.svg
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import axiosInstance from "../../api";
+import Modal from "@mui/material/Modal";
+
 import {
   candidatesList,
   candidatesListIntern,
@@ -14,10 +16,21 @@ function HrHomeCandidate({ data, onClick }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
-
   const [subMenu, setSubMenu] = useState(false);
+  const [deleteModal, setDeleteModal] = useState(false);
 
-  const handleDelete = async (id, designation) => {
+  //delete candidate
+  const [open1, setOpen1] = useState(false);
+  const handleClose1 = () => {
+    setOpen1(!open1);
+    setDeleteModal(!deleteModal);
+  };
+  const handleDelete = () => {
+    setDeleteModal(true);
+    setOpen1(true);
+  };
+
+  const handleDeleteCandidate = async (id, designation) => {
     axiosInstance
       .delete(`/candidate?id=${id}`, {
         headers: { Authorization: `Bearer ${userSignin.userInfo.token}` },
@@ -64,8 +77,34 @@ function HrHomeCandidate({ data, onClick }) {
           </div>
         )}
       </td>
-      <td onClick={() => handleDelete(data.id, data.designation)}>
-        <DeleteIcon className="hrHomeCandidate-deleteIcon" />
+      <td >
+        <DeleteIcon className="hrHomeCandidate-deleteIcon" onClick={handleDelete}/>
+        {deleteModal ? (
+          <Modal
+            open={open1}
+            onClose={handleClose1}
+            aria-labelledby="modal-modal-title"
+            aria-describedby="modal-modal-description"
+          >
+            <div className="delete_popup">
+              <div className="heading_delete_confirmation">
+                <h3>Are you sure to delete </h3>
+              </div>
+              <div className="confirmation_btns">
+                <button
+                  onClick={() =>
+                    handleDeleteCandidate(data.id, data.designation)
+                  }
+                >
+                  Yes
+                </button>
+                <button onClick={handleClose1}>No</button>
+              </div>
+            </div>
+          </Modal>
+        ) : (
+          ""
+        )}
       </td>
     </tr>
   );

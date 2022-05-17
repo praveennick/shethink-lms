@@ -6,6 +6,7 @@ import InputField from "../../InputField/InputField";
 import axiosInstance from "../../../api";
 import { useDispatch, useSelector } from "react-redux";
 import { getTechnology } from "../../../redux/actions/user.actions";
+import { refType } from "@mui/utils";
 
 export default function CreateCourse() {
   const dispatch = useDispatch();
@@ -15,6 +16,8 @@ export default function CreateCourse() {
   const [inputs, setInputs] = useState({
     courseName: "",
     courseDescription: "",
+    level: "",
+    refType: { blog: "", video: "", pdf: "" },
   });
 
   useEffect(() => {
@@ -32,13 +35,16 @@ export default function CreateCourse() {
       });
     }
     setFatchSkill(_temp);
-  }, [getSkills]);
+    console.log({ inputs });
+  }, [getSkills, inputs]);
 
   const handleCreate = (e) => {
     e.preventDefault();
     const body = new FormData();
     body.append("courseName", inputs.courseName);
     body.append("courseDescription", inputs.courseDescription);
+    body.append("level", inputs.level);
+    body.append("refType", inputs.refType);
 
     axiosInstance
       .post("/course", body, {
@@ -53,6 +59,10 @@ export default function CreateCourse() {
     console.log({ inputs });
     console.log({ body });
   };
+  const handleRef=(e)=>{
+    const value =e.target.value
+    // if(value==="blog")setInputs({...inputs,{...refType,blog:value}})
+  }
   return (
     <div className="createModule">
       <h1 className="createModule-heading">Create Your Module 📑</h1>
@@ -93,9 +103,15 @@ export default function CreateCourse() {
           <label htmlFor="" className="createModule-label">
             Module Level
           </label>
-          <select name="" id="" className="createModule-skill">
-            <option value="beginners">For Beginners</option>
-            <option value="advanced ">Advanced Learning</option>
+          <select
+            name=""
+            id=""
+            className="createModule-skill"
+            onChange={(e) => setInputs({ ...inputs, level: e.target.value })}
+          >
+            <option>select</option>
+            <option value="Beginner">Beginner</option>
+            <option value="Advance">Advance </option>
           </select>
           <label htmlFor="" className="createModule-label">
             Reference Type
@@ -103,7 +119,7 @@ export default function CreateCourse() {
 
           <select
             className="createModule-skill"
-            onChange={(e) => setInputs({ ...inputs, refType: e.target.value })}
+            onChange={handleRef}
             value={inputs.refType}
           >
             <option value="select">Select </option>
@@ -112,8 +128,7 @@ export default function CreateCourse() {
             <option value="blog">Blog Url</option>
             <option value="write">Write Yourself</option>
           </select>
-          <div className="createModule-renderItems">
-          </div>
+          <div className="createModule-renderItems"></div>
         </form>
         <div className="createModule-btns">
           <Link className="createModule-back-btn" to="/modules">

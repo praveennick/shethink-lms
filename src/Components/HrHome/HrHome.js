@@ -13,6 +13,7 @@ import {
   candidatesList,
   candidatesListIntern,
   addCandidate,
+  getTechnology,
 } from "../../redux/actions/user.actions";
 
 function HrHome() {
@@ -24,17 +25,20 @@ function HrHome() {
     /* add new technology */
   }
   const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
+  const handleOpen = () => {
+    setOpen(true);
+    dispatch(getTechnology(userSignin.userInfo));
+  };
   const handleClose = () => setOpen(false);
 
   {
     /* add  new candidate*/
   }
   const [open1, setOpen1] = useState(false);
-  const handleOpen1 = () => setOpen1(true);
+  const handleOpen1 = () => {
+    setOpen1(true);
+  };
   const handleClose1 = () => setOpen1(false);
-  const addNewCandidate = useSelector((state) => state.addCandidate);
-  // console.log("bhfeeeeeeee", addNewCandidate);
   const [inputField, setInputField] = useState({
     firstName: "",
     lastName: "",
@@ -65,14 +69,14 @@ function HrHome() {
   const handleFullTime = () => {
     setDesignation(ROLES.FULL_TIME);
     dispatch(candidatesList(userSignin.userInfo));
-    setSubMenu(!subMenu)
+    setSubMenu(!subMenu);
   };
 
   //intern
   const handleIntern = () => {
     setDesignation(ROLES.INTERN);
     dispatch(candidatesListIntern(userSignin.userInfo));
-    setSubMenu(!subMenu)
+    setSubMenu(!subMenu);
   };
   const style = {
     position: "absolute",
@@ -81,12 +85,21 @@ function HrHome() {
     transform: "translate(-50%, -50%)",
     width: "40%",
     bgcolor: "background.paper",
-    // border: "2px solid #000",
     boxShadow: 24,
     borderRadius: 1,
     overFlow: "hidden",
     p: 0,
   };
+
+  //show technology
+  const getTech = useSelector((state) => state.getTechnology);
+  const tech = [];
+  if (getTech?.commentInfo) {
+    getTech?.commentInfo?.forEach((item) => {
+      tech.push(item.title);
+    });
+  }
+  console.log({ tech });
 
   useEffect(() => {
     dispatch(candidatesList(userSignin.userInfo));
@@ -202,27 +215,37 @@ function HrHome() {
             <div></div>
 
             <label htmlFor="">Designation</label>
-            <InputField
-              placeholder={"type here"}
-              name="designation"
-              value={"designation"}
+
+            <select
+              className="designation_select"
               onChange={(e) =>
                 setInputField({
                   ...inputField,
                   designation: e.target.value,
                 })
               }
-            />
+            >
+              <option value="FT-Developer">Select</option>
+              <option value="FT-Developer">FT-Developer</option>
+              <option value="Intern">Intern</option>
+            </select>
+
             <label htmlFor="">Technology</label>
-            <InputField
-              placeholder={"type here"}
+
+            <select
+              className="designation_select"
               onChange={(e) =>
                 setInputField({
                   ...inputField,
                   technology: e.target.value,
                 })
               }
-            />
+            >
+            <option value="select">Select</option>
+              {tech?.map((item) => {
+                return <option value={item}>{item}</option>;
+              })}
+            </select>
 
             <button
               className="hrHome-modal-btn"

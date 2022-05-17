@@ -7,7 +7,7 @@ import { getTechnology } from "../../redux/actions/user.actions";
 function ChipTechnology() {
   const dispatch = useDispatch();
   const userSignin = useSelector((state) => state.userSignin);
-  const getTechnologyy = useSelector((state) => state.getTechnology);
+  const getTech = useSelector((state) => state.getTechnology);
 
   const [inputValue, setInputValue] = useState("");
   const [chips, setChips] = useState([]);
@@ -17,13 +17,13 @@ function ChipTechnology() {
 
   useEffect(() => {
     let titles = [];
-    if (getTechnologyy?.commentInfo) {
-      getTechnologyy?.commentInfo?.forEach((item) => {
+    if (getTech?.commentInfo) {
+      getTech?.commentInfo?.forEach((item) => {
         titles.push(item.title);
       });
       setChips(titles);
     }
-  }, [getTechnologyy]);
+  }, [getTech]);
 
   const fun = async () => {
     dispatch(getTechnology(userSignin.userInfo));
@@ -64,9 +64,10 @@ function ChipTechnology() {
         {chips.map((chipName) => (
           <Chip
             sx={chipStyle}
-            label={chipName}
             className="hrHome-modal-technology-chip"
             key={chipName}
+            label="Deletable"
+            onDelete={()=>console.log("click")}
           />
         ))}
       </div>
