@@ -1,6 +1,5 @@
 {
   "name": "shethink-lms",
-  "homepage": "https://praveennick.github.io/shethink-lms",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
